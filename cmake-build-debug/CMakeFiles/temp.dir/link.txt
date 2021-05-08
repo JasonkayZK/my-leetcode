@@ -1,1 +1,0 @@
-/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/temp.dir/test.cpp.o  -o temp.exe -Wl,--out-implib,libtemp.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
