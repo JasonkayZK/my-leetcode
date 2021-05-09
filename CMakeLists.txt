@@ -3,4 +3,5 @@ project(my_leetcode)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(hello hello.cpp)
+
+add_executable(26 solved/easy/26.cpp)
