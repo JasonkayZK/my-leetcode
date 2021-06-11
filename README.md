@@ -1,5 +1,16 @@
+# My LeetCode
+
 The solutions for LeetCode.
 
--   By Java: https://github.com/JasonkayZK/My_LeetCode/tree/java
--   By C++: https://github.com/JasonkayZK/My_LeetCode/tree/cpp
+The main branch stores the algorithm template.
+
+The other branches goes for solutions in different program languages.
+
+
+
+| **Project**                                                  | **Date**   | **Note**           |
+| ------------------------------------------------------------ | ---------- | ------------------ |
+| [Algorithm-Template](https://github.com/JasonkayZK/My_LeetCode) | 2021-06-11 | Algorithm template |
+| [Java-Solution](https://github.com/JasonkayZK/My_LeetCode/tree/java) | 2020-11-10 | Java solution      |
+| [C++-Solution](https://github.com/JasonkayZK/My_LeetCode/tree/cpp) | 2020-11-10 | C++ solution       |
 
