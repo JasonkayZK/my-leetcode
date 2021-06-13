@@ -14,15 +14,17 @@ using namespace std;
 
 class Solution {
 public:
-    int numSquares(int n) {
-        vector<int> dp(n+1);
-        for (int i = 1; i <= n; ++i) {
-            int minn = INT_MAX;
-            for (int j = 1; j * j <= i; ++j) {
-                minn = min(minn, dp[i-j*j]);
+    int firstBadVersion(int n) {
+        int left = 1, right = n;
+
+        while (left < right) {
+            int mid = (right - left) / 2 + left;
+            if (isBadVersion(mid)) {
+                right = mid;
+            } else {
+                left = mid + 1;
             }
-            dp[i] = minn + 1;
         }
-        return dp[n];
+        return left;
     }
 };
