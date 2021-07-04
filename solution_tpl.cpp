@@ -9,11 +9,13 @@
 #include <unordered_set>
 #include <unordered_map>
 #include <climits>
+#include <queue>
 
 using namespace std;
 
 using PII = pair<int, int>;
 using LL = long long;
+using PIC = pair<int, char>;
 
 // Definition for a binary tree node.
 class TreeNode {
@@ -41,6 +43,17 @@ public:
 
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
+
+void print_vec(vector<int> arr) {
+    std::for_each(arr.begin(), arr.end(), [](const auto &i) { std::cout << i << " "; });
+    cout << "\n";
+}
+
+void swap(vector<int> &nums, int i, int j) {
+    int temp = nums[i];
+    nums[i] = nums[j];
+    nums[j] = temp;
+}
 
 class Solution {
 private:
