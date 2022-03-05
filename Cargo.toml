@@ -1,0 +1,13 @@
+[package]
+name = "leetcode-rust"
+version = "0.1.0"
+edition = "2021"
+license-file = "LICENSE"
+description = "leetcode solution for rust"
+homepage = "https://github.com/JasonkayZK/my-leetcode/tree/rust/"
+readme = "README.md"
+repository = "https://github.com/JasonkayZK/"
+authors = ["Jasonkay jasonkayzk@gmail.com"]
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
