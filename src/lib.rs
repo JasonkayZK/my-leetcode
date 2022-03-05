@@ -1,3 +1,3 @@
 mod easy;
-mod middle;
 mod hard;
+mod middle;
