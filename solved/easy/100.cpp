@@ -103,6 +103,62 @@ void swap(vector<int> &nums, int i, int j) {
     nums[j] = temp;
 }
 
+/* Method 1: BFS
+class Solution {
+private:
+
+public:
+
+    bool isSameTree(TreeNode *p, TreeNode *q) {
+        if (p == nullptr && q == nullptr) return true;
+        if (p == nullptr || q == nullptr) return false;
+
+        stack<TreeNode *> stkP{};
+        stack<TreeNode *> stkQ{};
+        stkP.push(p);
+        stkQ.push(q);
+        while (!stkP.empty() && !stkQ.empty()) {
+            auto curP = stkP.top();
+            stkP.pop();
+            auto curQ = stkQ.top();
+            stkQ.pop();
+
+            if (curP->left != nullptr && curQ->left != nullptr) {
+                stkP.push(curP->left);
+                stkQ.push(curQ->left);
+            } else if ((curP->left != nullptr && curQ->left == nullptr) ||
+                       (curP->left == nullptr && curQ->left != nullptr)) {
+                return false;
+            }
+
+            if (curP->val != curQ->val) {
+                return false;
+            }
+
+            if (curP->right != nullptr && curQ->right != nullptr) {
+                stkP.push(curP->right);
+                stkQ.push(curQ->right);
+            } else if ((curP->right != nullptr && curQ->right == nullptr) ||
+                       (curP->right == nullptr && curQ->right != nullptr)) {
+                return false;
+            }
+        }
+
+        while (!stkP.empty() && !stkQ.empty()) {
+            if (stkP.top()->val != stkQ.top()->val) {
+                return false;
+            }
+            stkP.pop();
+            stkQ.pop();
+        }
+
+        return stkP.empty() && stkQ.empty();
+    }
+
+};
+*/
+
+/* Solution 2: Recursive */
 class Solution {
 private:
 
@@ -119,6 +175,14 @@ public:
 };
 
 int main() {
+
+    auto p = new TreeNode(1);
+    p->left = new TreeNode(2);
+
+    auto q = new TreeNode(1);
+    q->right = new TreeNode(2);
+
+    std::cout << Solution{}.isSameTree(p, q);
 
     return 0;
 }

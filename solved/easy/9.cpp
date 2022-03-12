@@ -108,12 +108,18 @@ private:
 
 public:
 
-    bool isSameTree(TreeNode *p, TreeNode *q) {
-        if (p == nullptr && q == nullptr) return true;
-        if (p == nullptr || q == nullptr)return false;
+    bool isPalindrome(int x) {
+        if (x < 0) return false;
+        if (x == 0) return true;
+        if (x % 10 == 0) return false;
 
-        if (p->val != q->val)return false;
-        else return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+        int rev = 0;
+        while (rev < x) {
+            rev = rev * 10 + x % 10;
+            x /= 10;
+        }
+
+        return rev == x || rev/10 == x;
     }
 
 };

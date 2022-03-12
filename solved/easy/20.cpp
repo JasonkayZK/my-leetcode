@@ -106,16 +106,35 @@ void swap(vector<int> &nums, int i, int j) {
 class Solution {
 private:
 
+    unordered_map<char, char> pairs = {
+            {')', '('},
+            {']', '['},
+            {'}', '{'}
+    };
+
 public:
 
-    bool isSameTree(TreeNode *p, TreeNode *q) {
-        if (p == nullptr && q == nullptr) return true;
-        if (p == nullptr || q == nullptr)return false;
+    bool isValid(string s) {
+        auto n = s.size();
+        if (n % 2 == 1) {
+            return false;
+        }
 
-        if (p->val != q->val)return false;
-        else return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+        stack<char> stk {};
+
+        for (const auto &ch : s) {
+            if (pairs.count(ch)) {
+                if (stk.empty() || stk.top() != pairs[ch]) {
+                    return false;
+                }
+                stk.pop();
+            } else {
+                stk.push(ch);
+            }
+        }
+
+        return stk.empty();
     }
-
 };
 
 int main() {

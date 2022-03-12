@@ -108,12 +108,31 @@ private:
 
 public:
 
-    bool isSameTree(TreeNode *p, TreeNode *q) {
-        if (p == nullptr && q == nullptr) return true;
-        if (p == nullptr || q == nullptr)return false;
+    string longestCommonPrefix(vector<string>& strs) {
+        if (strs.empty()) return "";
+        if (strs.size() == 1) return strs[0];
 
-        if (p->val != q->val)return false;
-        else return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+        auto minSize = strs[0].size();
+        for (const auto &item : strs) {
+            minSize = min(minSize, item.size());
+        }
+
+        int idx = 0;
+        bool fastEnd = false;
+        while (idx < minSize) {
+            char c = strs[0][idx];
+            if (std::any_of(strs.begin(), strs.end(), [=](const auto &str) {
+                return str[idx] != c;
+            })) {
+                fastEnd = true;
+                break;
+            }
+
+            idx++;
+            if (fastEnd) break;
+        }
+
+        return strs[0].substr(0 , idx);
     }
 
 };

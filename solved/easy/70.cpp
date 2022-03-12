@@ -108,12 +108,16 @@ private:
 
 public:
 
-    bool isSameTree(TreeNode *p, TreeNode *q) {
-        if (p == nullptr && q == nullptr) return true;
-        if (p == nullptr || q == nullptr)return false;
+    int climbStairs(int n) {
+        int a = 1, b = 1;
 
-        if (p->val != q->val)return false;
-        else return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+        for (int i = 2; i <= n; ++i) {
+            int temp = a+b;
+            a = b;
+            b = temp;
+        }
+
+        return b;
     }
 
 };
