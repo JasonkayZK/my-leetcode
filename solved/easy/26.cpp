@@ -119,40 +119,29 @@ private:
 
 public:
 
-    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        auto dummy = new ListNode(0);
-        auto cur = dummy;
+    int removeDuplicates(vector<int> &nums) {
+        int size = int(nums.size());
 
-        while (list1 != nullptr && list2 != nullptr) {
-            if (list1->val > list2->val) {
-                cur->next = list2;
-                cur = cur->next;
-                list2 = list2->next;
-            } else{
-                cur->next = list1;
-                cur = cur->next;
-                list1 = list1->next;
+        if (size <= 1) return size;
+
+        int slow = 0, fast = 0;
+
+        while (fast < size) {
+            if (nums[fast] > nums[slow]) {
+                nums[++slow] = nums[fast];
             }
+            fast++;
         }
 
-        while (list1 != nullptr) {
-            cur->next = list1;
-            cur = cur->next;
-            list1 = list1->next;
-        }
-
-        while (list2 != nullptr) {
-            cur->next = list2;
-            cur = cur->next;
-            list2 = list2->next;
-        }
-
-        return dummy->next;
+        return slow + 1;
     }
 
 };
 
 int main() {
+
+    vector<int> c = {1, 1, 2};
+    Solution().removeDuplicates(c);
 
     return 0;
 }

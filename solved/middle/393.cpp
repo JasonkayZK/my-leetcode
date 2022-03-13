@@ -119,36 +119,29 @@ private:
 
 public:
 
-    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        auto dummy = new ListNode(0);
-        auto cur = dummy;
+    bool validUtf8(vector<int> &data) {
+        int byte_cnt = 0;
 
-        while (list1 != nullptr && list2 != nullptr) {
-            if (list1->val > list2->val) {
-                cur->next = list2;
-                cur = cur->next;
-                list2 = list2->next;
-            } else{
-                cur->next = list1;
-                cur = cur->next;
-                list1 = list1->next;
+        for (const auto &item: data) {
+            if (byte_cnt > 0) {
+                if (item >> 6 != 2) return false;
+                else byte_cnt--;
+            } else if (item >> 7 == 0) {
+                byte_cnt = 0;
+            } else if (item >> 5 == 0b110) {
+                byte_cnt = 1;
+            } else if (item >> 4 == 0b1110) {
+                byte_cnt = 2;
+            } else if (item >> 3 == 0b11110) {
+                byte_cnt = 3;
+            } else {
+                return false;
             }
         }
 
-        while (list1 != nullptr) {
-            cur->next = list1;
-            cur = cur->next;
-            list1 = list1->next;
-        }
-
-        while (list2 != nullptr) {
-            cur->next = list2;
-            cur = cur->next;
-            list2 = list2->next;
-        }
-
-        return dummy->next;
+        return byte_cnt == 0;
     }
+
 
 };
 

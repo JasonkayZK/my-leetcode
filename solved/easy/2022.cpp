@@ -118,38 +118,16 @@ class Solution {
 private:
 
 public:
+    vector<vector<int>> construct2DArray(vector<int> &original, int m, int n) {
+        if (m * n != original.size()) return {};
 
-    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        auto dummy = new ListNode(0);
-        auto cur = dummy;
-
-        while (list1 != nullptr && list2 != nullptr) {
-            if (list1->val > list2->val) {
-                cur->next = list2;
-                cur = cur->next;
-                list2 = list2->next;
-            } else{
-                cur->next = list1;
-                cur = cur->next;
-                list1 = list1->next;
-            }
+        vector<vector<int> > res(m);
+        for (int i = 0; i < m; ++i) {
+            res[i] = vector<int>(original.begin() + i * n, original.begin() + i * n +n);
         }
 
-        while (list1 != nullptr) {
-            cur->next = list1;
-            cur = cur->next;
-            list1 = list1->next;
-        }
-
-        while (list2 != nullptr) {
-            cur->next = list2;
-            cur = cur->next;
-            list2 = list2->next;
-        }
-
-        return dummy->next;
+        return res;
     }
-
 };
 
 int main() {

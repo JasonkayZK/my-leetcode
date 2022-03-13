@@ -118,38 +118,10 @@ class Solution {
 private:
 
 public:
-
-    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        auto dummy = new ListNode(0);
-        auto cur = dummy;
-
-        while (list1 != nullptr && list2 != nullptr) {
-            if (list1->val > list2->val) {
-                cur->next = list2;
-                cur = cur->next;
-                list2 = list2->next;
-            } else{
-                cur->next = list1;
-                cur = cur->next;
-                list1 = list1->next;
-            }
-        }
-
-        while (list1 != nullptr) {
-            cur->next = list1;
-            cur = cur->next;
-            list1 = list1->next;
-        }
-
-        while (list2 != nullptr) {
-            cur->next = list2;
-            cur = cur->next;
-            list2 = list2->next;
-        }
-
-        return dummy->next;
+    void deleteNode(ListNode* node) {
+        node->val = node->next->val;
+        node->next = node->next->next;
     }
-
 };
 
 int main() {

@@ -119,35 +119,16 @@ private:
 
 public:
 
-    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        auto dummy = new ListNode(0);
-        auto cur = dummy;
-
-        while (list1 != nullptr && list2 != nullptr) {
-            if (list1->val > list2->val) {
-                cur->next = list2;
-                cur = cur->next;
-                list2 = list2->next;
-            } else{
-                cur->next = list1;
-                cur = cur->next;
-                list1 = list1->next;
+    string makeFancyString(string s) {
+        string res;
+        for (char ch: s) {
+            int n = res.size();
+            if (n >= 2 && res[n - 1] == ch && res[n - 2] == ch) {
+                continue;
             }
+            res.push_back(ch);
         }
-
-        while (list1 != nullptr) {
-            cur->next = list1;
-            cur = cur->next;
-            list1 = list1->next;
-        }
-
-        while (list2 != nullptr) {
-            cur->next = list2;
-            cur = cur->next;
-            list2 = list2->next;
-        }
-
-        return dummy->next;
+        return res;
     }
 
 };

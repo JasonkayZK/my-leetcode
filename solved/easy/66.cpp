@@ -119,40 +119,34 @@ private:
 
 public:
 
-    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        auto dummy = new ListNode(0);
-        auto cur = dummy;
+    vector<int> plusOne(vector<int> &digits) {
+        if (digits.empty()) return {};
 
-        while (list1 != nullptr && list2 != nullptr) {
-            if (list1->val > list2->val) {
-                cur->next = list2;
-                cur = cur->next;
-                list2 = list2->next;
-            } else{
-                cur->next = list1;
-                cur = cur->next;
-                list1 = list1->next;
-            }
+        int size = int(digits.size());
+        int sum = digits[size - 1] + 1;
+        int carry = sum / 10;
+        digits[size - 1] = sum % 10;
+
+        if ( carry == 0) return digits;
+
+        for (int i = size - 2; i >= 0 && carry > 0; --i) {
+            sum = digits[i] + carry;
+            carry = sum / 10;
+            digits[i] = sum % 10;
         }
 
-        while (list1 != nullptr) {
-            cur->next = list1;
-            cur = cur->next;
-            list1 = list1->next;
+        if (carry > 0) {
+            digits.insert(digits.begin(), 1);
         }
 
-        while (list2 != nullptr) {
-            cur->next = list2;
-            cur = cur->next;
-            list2 = list2->next;
-        }
-
-        return dummy->next;
+        return digits;
     }
 
 };
 
 int main() {
+    vector<int> c = {9, 9};
+    Solution().plusOne(c);
 
     return 0;
 }
