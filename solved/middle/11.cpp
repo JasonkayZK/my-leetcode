@@ -157,20 +157,24 @@ private:
 
 public:
 
-    int lengthOfLongestSubstring(string s) {
-        int ans = 0, right = 0, n = int(s.size());
-        vector<bool> occ(129, false);
+    int maxArea(vector<int> &height) {
+        int size = height.size();
 
-        for (int i = 0; i < n; i++) {
-            while (right < n && occ[s[right]] == 0) occ[s[right++]] = true;
-            if (right >= n) {
-                ans = max(ans, right - i);
-                break;
+        if (size <= 1) return 0;
+        if (size == 2) return min(height[0], height[1]);
+
+        int res = 0;
+        int left = 0, right = size - 1;
+        while (left < right) {
+            res = max(res, (right-left)* min(height[left], height[right]));
+            if (height[left] > height[right]) {
+                right--;
+            } else {
+                left++;
             }
-            occ[s[i]] = false;
-            ans = max(ans, right - i);
         }
-        return ans;
+
+        return res;
     }
 
 };

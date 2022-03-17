@@ -114,63 +114,45 @@ vector<string> split(const string &s, const char delimiter) {
     return tokens;
 }
 
-class TrieTree {
-public:
-    TrieTree() {
-        this->children = vector<TrieTree *>(26, nullptr);
-        this->isEnd = false;
-    }
-
-    void insert(const string &word) {
-        TrieTree *node = this;
-        for (const auto &item: word) {
-            int idx = item - 'a';
-            if (node->children[idx] == nullptr) {
-                node->children[idx] = new TrieTree();
-            }
-
-            node = node->children[idx];
-        }
-
-        node->isEnd = true;
-    }
-
-    bool search(const string &word) {
-        TrieTree *node = this;
-        for (const auto &item: word) {
-            int idx = item - 'a';
-            if (node->children[idx] == nullptr) {
-                return false;
-            }
-            node = node->children[idx];
-        }
-        return node->isEnd;
-    }
-
-private:
-    vector<TrieTree *> children;
-    bool isEnd;
-};
-
 class Solution {
 private:
 
 public:
 
-    int lengthOfLongestSubstring(string s) {
-        int ans = 0, right = 0, n = int(s.size());
-        vector<bool> occ(129, false);
+    vector<string> findRestaurant(vector<string> &list1, vector<string> &list2) {
+        vector<string> s{};
+        vector<string> l{};
+        unordered_map<string, int> m{};
 
-        for (int i = 0; i < n; i++) {
-            while (right < n && occ[s[right]] == 0) occ[s[right++]] = true;
-            if (right >= n) {
-                ans = max(ans, right - i);
-                break;
-            }
-            occ[s[i]] = false;
-            ans = max(ans, right - i);
+        if (list1.size() < list2.size()) {
+            s = list1;
+            l = list2;
+        } else {
+            s = list2;
+            l = list1;
         }
-        return ans;
+
+        for (int i = 0; i < s.size(); ++i) {
+            m.emplace(s[i], i);
+        }
+
+        int minSum = INT_MAX;
+        vector<string> res{};
+        for (int i = 0; i < l.size(); ++i) {
+            if (m.count(l[i]) > 0) {
+                int idxSum = i + m[l[i]];
+
+                if (idxSum < minSum) {
+                    res.clear();
+                    minSum = idxSum;
+                    res.push_back(l[i]);
+                } else if (idxSum == minSum) {
+                    res.push_back(l[i]);
+                }
+            }
+        }
+
+        return res;
     }
 
 };

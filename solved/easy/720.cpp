@@ -139,12 +139,12 @@ public:
         TrieTree *node = this;
         for (const auto &item: word) {
             int idx = item - 'a';
-            if (node->children[idx] == nullptr) {
+            if (node->children[idx] == nullptr || !node->children[idx]->isEnd) {
                 return false;
             }
             node = node->children[idx];
         }
-        return node->isEnd;
+        return node != nullptr && node->isEnd;
     }
 
 private:
@@ -157,20 +157,21 @@ private:
 
 public:
 
-    int lengthOfLongestSubstring(string s) {
-        int ans = 0, right = 0, n = int(s.size());
-        vector<bool> occ(129, false);
-
-        for (int i = 0; i < n; i++) {
-            while (right < n && occ[s[right]] == 0) occ[s[right++]] = true;
-            if (right >= n) {
-                ans = max(ans, right - i);
-                break;
-            }
-            occ[s[i]] = false;
-            ans = max(ans, right - i);
+    string longestWord(vector<string> &words) {
+        TrieTree trie{};
+        for (const auto &item: words) {
+            trie.insert(item);
         }
-        return ans;
+
+        string longest;
+        for (const auto &item: words) {
+            if (trie.search(item)) {
+                if (item.size() > longest.size() || (item.size() == longest.size() && item < longest)) {
+                    longest = item;
+                }
+            }
+        }
+        return longest;
     }
 
 };

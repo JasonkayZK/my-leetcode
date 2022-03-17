@@ -157,20 +157,23 @@ private:
 
 public:
 
-    int lengthOfLongestSubstring(string s) {
-        int ans = 0, right = 0, n = int(s.size());
-        vector<bool> occ(129, false);
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> res;
 
-        for (int i = 0; i < n; i++) {
-            while (right < n && occ[s[right]] == 0) occ[s[right++]] = true;
-            if (right >= n) {
-                ans = max(ans, right - i);
-                break;
+        stack<TreeNode*> stk;
+        while (root != nullptr || !stk.empty()) {
+            while (root != nullptr) {
+                stk.push(root);
+                root = root->left;
             }
-            occ[s[i]] = false;
-            ans = max(ans, right - i);
+
+            root = stk.top();
+            stk.pop();
+            res.push_back(root->val);
+            root = root->right;
         }
-        return ans;
+
+        return res;
     }
 
 };

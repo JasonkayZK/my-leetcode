@@ -114,63 +114,31 @@ vector<string> split(const string &s, const char delimiter) {
     return tokens;
 }
 
-class TrieTree {
-public:
-    TrieTree() {
-        this->children = vector<TrieTree *>(26, nullptr);
-        this->isEnd = false;
-    }
-
-    void insert(const string &word) {
-        TrieTree *node = this;
-        for (const auto &item: word) {
-            int idx = item - 'a';
-            if (node->children[idx] == nullptr) {
-                node->children[idx] = new TrieTree();
-            }
-
-            node = node->children[idx];
-        }
-
-        node->isEnd = true;
-    }
-
-    bool search(const string &word) {
-        TrieTree *node = this;
-        for (const auto &item: word) {
-            int idx = item - 'a';
-            if (node->children[idx] == nullptr) {
-                return false;
-            }
-            node = node->children[idx];
-        }
-        return node->isEnd;
-    }
-
-private:
-    vector<TrieTree *> children;
-    bool isEnd;
-};
-
 class Solution {
 private:
 
+    int maxOr = 0;
+    int res = 0;
+
 public:
 
-    int lengthOfLongestSubstring(string s) {
-        int ans = 0, right = 0, n = int(s.size());
-        vector<bool> occ(129, false);
+    int countMaxOrSubsets(vector<int> &nums) {
+        this->res = 0;
+        maxOr = accumulate(nums.begin(), nums.end(), 0, bit_or<int>{});
+        helper(nums, 0, 0);
+        return res;
+    }
 
-        for (int i = 0; i < n; i++) {
-            while (right < n && occ[s[right]] == 0) occ[s[right++]] = true;
-            if (right >= n) {
-                ans = max(ans, right - i);
-                break;
-            }
-            occ[s[i]] = false;
-            ans = max(ans, right - i);
+    void helper(vector<int> &nums, int x, int cur) {
+        int n = int(nums.size());
+        if (cur == maxOr) {
+            res += 1 << (n - x);
+            return;
         }
-        return ans;
+        if (x == n) return;
+
+        helper(nums, x + 1, cur); // not pick next
+        helper(nums, x + 1, cur | nums[x]);
     }
 
 };

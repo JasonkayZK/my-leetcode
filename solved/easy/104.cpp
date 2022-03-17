@@ -114,63 +114,14 @@ vector<string> split(const string &s, const char delimiter) {
     return tokens;
 }
 
-class TrieTree {
-public:
-    TrieTree() {
-        this->children = vector<TrieTree *>(26, nullptr);
-        this->isEnd = false;
-    }
-
-    void insert(const string &word) {
-        TrieTree *node = this;
-        for (const auto &item: word) {
-            int idx = item - 'a';
-            if (node->children[idx] == nullptr) {
-                node->children[idx] = new TrieTree();
-            }
-
-            node = node->children[idx];
-        }
-
-        node->isEnd = true;
-    }
-
-    bool search(const string &word) {
-        TrieTree *node = this;
-        for (const auto &item: word) {
-            int idx = item - 'a';
-            if (node->children[idx] == nullptr) {
-                return false;
-            }
-            node = node->children[idx];
-        }
-        return node->isEnd;
-    }
-
-private:
-    vector<TrieTree *> children;
-    bool isEnd;
-};
-
 class Solution {
 private:
 
 public:
 
-    int lengthOfLongestSubstring(string s) {
-        int ans = 0, right = 0, n = int(s.size());
-        vector<bool> occ(129, false);
-
-        for (int i = 0; i < n; i++) {
-            while (right < n && occ[s[right]] == 0) occ[s[right++]] = true;
-            if (right >= n) {
-                ans = max(ans, right - i);
-                break;
-            }
-            occ[s[i]] = false;
-            ans = max(ans, right - i);
-        }
-        return ans;
+    int maxDepth(TreeNode* root) {
+        if (root == nullptr) return 0;
+        return max(maxDepth(root->left) + 1, maxDepth(root->right) + 1);
     }
 
 };

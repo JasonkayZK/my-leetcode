@@ -157,25 +157,12 @@ private:
 
 public:
 
-    int lengthOfLongestSubstring(string s) {
-        int ans = 0, right = 0, n = int(s.size());
-        vector<bool> occ(129, false);
 
-        for (int i = 0; i < n; i++) {
-            while (right < n && occ[s[right]] == 0) occ[s[right++]] = true;
-            if (right >= n) {
-                ans = max(ans, right - i);
-                break;
-            }
-            occ[s[i]] = false;
-            ans = max(ans, right - i);
-        }
-        return ans;
-    }
 
 };
 
 int main() {
+
 
     return 0;
 }

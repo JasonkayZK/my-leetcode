@@ -114,63 +114,25 @@ vector<string> split(const string &s, const char delimiter) {
     return tokens;
 }
 
-class TrieTree {
-public:
-    TrieTree() {
-        this->children = vector<TrieTree *>(26, nullptr);
-        this->isEnd = false;
-    }
-
-    void insert(const string &word) {
-        TrieTree *node = this;
-        for (const auto &item: word) {
-            int idx = item - 'a';
-            if (node->children[idx] == nullptr) {
-                node->children[idx] = new TrieTree();
-            }
-
-            node = node->children[idx];
-        }
-
-        node->isEnd = true;
-    }
-
-    bool search(const string &word) {
-        TrieTree *node = this;
-        for (const auto &item: word) {
-            int idx = item - 'a';
-            if (node->children[idx] == nullptr) {
-                return false;
-            }
-            node = node->children[idx];
-        }
-        return node->isEnd;
-    }
-
-private:
-    vector<TrieTree *> children;
-    bool isEnd;
-};
-
 class Solution {
 private:
 
 public:
 
-    int lengthOfLongestSubstring(string s) {
-        int ans = 0, right = 0, n = int(s.size());
-        vector<bool> occ(129, false);
+    void merge(vector<int> &nums1, int m, vector<int> &nums2, int n) {
+        int tail = m + n - 1, cur1 = m - 1, cur2 = n - 1;
 
-        for (int i = 0; i < n; i++) {
-            while (right < n && occ[s[right]] == 0) occ[s[right++]] = true;
-            if (right >= n) {
-                ans = max(ans, right - i);
-                break;
+        while (cur1 >= 0 || cur2 >= 0) {
+            if (cur1 < 0) {
+                nums1[tail--] = nums2[cur2--];
+            } else if (cur2 < 0) {
+                nums1[tail--] = nums1[cur1--];
+            } else if (nums1[cur1] > nums2[cur2]) {
+                nums1[tail--] = nums1[cur1--];
+            } else {
+                nums1[tail--] = nums2[cur2--];
             }
-            occ[s[i]] = false;
-            ans = max(ans, right - i);
         }
-        return ans;
     }
 
 };
