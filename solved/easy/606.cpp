@@ -93,7 +93,7 @@ public:
     }
 };
 
-void print_vec(const vector<int> &arr) {
+void print_vec(vector<int> arr) {
     std::for_each(arr.begin(), arr.end(), [](const auto &i) { std::cout << i << " "; });
     cout << "\n";
 }
@@ -157,7 +157,22 @@ private:
 
 public:
 
+    string tree2str(TreeNode *root) {
+        string res{};
+        dfs(root, &res);
+        return res.substr(1, res.size() - 2);
+    }
 
+    void dfs(TreeNode *root, string *res) {
+        if (root == nullptr) return;
+
+        res->push_back('(');
+        res->append(to_string(root->val));
+        if (root->left != nullptr) dfs(root->left, res);
+        else if (root->right != nullptr) res->append("()");
+        if (root->right != nullptr) dfs(root->right, res);
+        res->push_back(')');
+    }
 
 };
 

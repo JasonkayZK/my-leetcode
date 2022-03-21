@@ -93,7 +93,7 @@ public:
     }
 };
 
-void print_vec(const vector<int> &arr) {
+void print_vec(vector<int> arr) {
     std::for_each(arr.begin(), arr.end(), [](const auto &i) { std::cout << i << " "; });
     cout << "\n";
 }
@@ -157,11 +157,27 @@ private:
 
 public:
 
+    int removeElement(vector<int> &nums, int val) {
+        int left = 0, right = int(nums.size());
 
+        while (right > left) {
+            if (nums[left] == val) {
+                nums[left] = nums[right-1];
+                right--;
+            } else {
+                left++;
+            }
+        }
+        return left;
+    }
 
 };
 
 int main() {
+
+    vector<int> list = {2, 2, 2, 2, 2};
+    std::cout << Solution().removeElement(list, 3);
+
 
     return 0;
 }

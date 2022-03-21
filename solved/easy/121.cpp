@@ -156,9 +156,18 @@ class Solution {
 private:
 
 public:
+    int maxProfit(vector<int> &prices) {
+        int p_size = prices.size();
+        if (p_size <= 1) return 0;
 
+        int max_p = prices[p_size - 1], res = 0, cur = p_size - 1;
+        while (--cur >= 0) {
+            res = max(res, max_p - prices[cur]);
+            max_p = max(max_p, prices[cur]);
+        }
 
-
+        return res;
+    }
 };
 
 int main() {

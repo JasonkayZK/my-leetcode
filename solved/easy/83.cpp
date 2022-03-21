@@ -93,7 +93,7 @@ public:
     }
 };
 
-void print_vec(const vector<int> &arr) {
+void print_vec(vector<int> arr) {
     std::for_each(arr.begin(), arr.end(), [](const auto &i) { std::cout << i << " "; });
     cout << "\n";
 }
@@ -157,7 +157,20 @@ private:
 
 public:
 
+    ListNode* deleteDuplicates(ListNode* head) {
+        if (head == nullptr || head->next == nullptr) return head;
 
+        ListNode* cur = head;
+        while (cur->next != nullptr) {
+            if (cur->val == cur->next->val) {
+                cur->next = cur->next->next;
+            }
+            else {
+                cur = cur->next;
+            }
+        }
+        return head;
+    }
 
 };
 

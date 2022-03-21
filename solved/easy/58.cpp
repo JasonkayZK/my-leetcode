@@ -93,7 +93,7 @@ public:
     }
 };
 
-void print_vec(const vector<int> &arr) {
+void print_vec(vector<int> arr) {
     std::for_each(arr.begin(), arr.end(), [](const auto &i) { std::cout << i << " "; });
     cout << "\n";
 }
@@ -157,7 +157,17 @@ private:
 
 public:
 
+    int lengthOfLastWord(string s) {
+        int cur = int(s.size()) - 1;
+        while (cur >= 0 && s[cur] == ' ') cur--;
 
+        int res = 0;
+        while (cur >= 0 && s[cur] != ' ') {
+            cur--;
+            res++;
+        }
+        return res;
+    }
 
 };
 

@@ -93,7 +93,7 @@ public:
     }
 };
 
-void print_vec(const vector<int> &arr) {
+void print_vec(vector<int> arr) {
     std::for_each(arr.begin(), arr.end(), [](const auto &i) { std::cout << i << " "; });
     cout << "\n";
 }
@@ -157,7 +157,17 @@ private:
 
 public:
 
+    int change(int amount, vector<int> &coins) {
+        vector<int> dp(amount + 1);
+        dp[0] = 1;
 
+        for (const auto &coin : coins) {
+            for (int i = coin; i <= amount; ++i) {
+                dp[i] += dp[i - coin];
+            }
+        }
+        return dp[amount];
+    }
 
 };
 

@@ -152,14 +152,83 @@ private:
     bool isEnd;
 };
 
+/* Solution 1: Recursive
 class Solution {
 private:
+    unordered_set<int> s;
 
 public:
 
-
+    bool findTarget(TreeNode* root, int k) {
+        if (root == nullptr) return false;
+        if (s.count(k - root->val) > 0) return true;
+        s.insert(root->val);
+        return findTarget(root->left, k) || findTarget(root->right, k);
+    }
 
 };
+*/
+
+/* Solution 2: Two pointer */
+class Solution {
+private:
+
+    TreeNode *getLeft(stack<TreeNode *> &stk) {
+        TreeNode *root = stk.top();
+        stk.pop();
+        TreeNode *node = root->right;
+        while (node != nullptr) {
+            stk.push(node);
+            node = node->left;
+        }
+        return root;
+    }
+
+    TreeNode *getRight(stack<TreeNode *> &stk) {
+        TreeNode *root = stk.top();
+        stk.pop();
+        TreeNode *node = root->left;
+        while (node != nullptr) {
+            stk.push(node);
+            node = node->right;
+        }
+        return root;
+    }
+
+public:
+
+    bool findTarget(TreeNode *root, int k) {
+        if (root == nullptr) return false;
+        auto left = root, right = root;
+        stack<TreeNode *> leftStk, rightStk;
+
+        leftStk.push(left);
+        while (left->left != nullptr) {
+            leftStk.push(left->left);
+            left = left->left;
+        }
+        rightStk.push(right);
+        while (right->right != nullptr) {
+            rightStk.push(right->right);
+            right = right->right;
+        }
+
+        while (left != right) {
+            if (left->val + right->val == k) {
+                return true;
+            }
+            if (left->val + right->val < k) {
+                left = getLeft(leftStk);
+            } else {
+                right = getRight(rightStk);
+            }
+        }
+
+        return false;
+    }
+
+};
+
 
 int main() {
 

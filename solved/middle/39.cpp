@@ -93,7 +93,7 @@ public:
     }
 };
 
-void print_vec(const vector<int> &arr) {
+void print_vec(vector<int> arr) {
     std::for_each(arr.begin(), arr.end(), [](const auto &i) { std::cout << i << " "; });
     cout << "\n";
 }
@@ -152,16 +152,79 @@ private:
     bool isEnd;
 };
 
+/* Solution 1: dp */
 class Solution {
 private:
 
 public:
 
+    vector<vector<int>> combinationSum(vector<int> &candidates, int target) {
+        vector<vector<vector<int>>> res(target + 1);
+        vector<int> dp(target + 1);
 
+        res[0] = {{}};
+        dp[0] = 1;
 
+        for (const auto &item: candidates) {
+            for (int i = item; i <= target; ++i) {
+                dp[i] += dp[i - item];
+
+                if (dp[i - item] > 0) { // if answer exist, add to res
+                    for (auto &cur: res[i - item]) {
+                        vector<int> newVec = {cur};
+                        newVec.push_back(item);
+                        res[i].push_back(newVec);
+                    }
+                }
+            }
+        }
+
+        return res[target];
+    }
 };
+
+
+/* Solution 2: Backtrace
+class Solution {
+private:
+
+    vector<vector<int>> res;
+
+public:
+
+    vector<vector<int>> combinationSum(vector<int> &candidates, int target) {
+
+        res = {};
+        vector<int> curRes = {};
+        helper(candidates, target, 0, 0, curRes);
+        return res;
+    }
+
+    void helper(const vector<int> &candidates, int target, int curSum, int idx, vector<int> &curRes) {
+        if (idx >= candidates.size() || curSum > target) return;
+        if (curSum == target) {
+            res.push_back(curRes);
+            return;
+        }
+
+        curRes.push_back(candidates[idx]);
+        helper(candidates, target, curSum + candidates[idx], idx, curRes);
+        curRes.pop_back();
+
+        helper(candidates, target, curSum, idx + 1, curRes);
+    }
+};
+*/
 
 int main() {
 
+    vector<int> list = {2, 3, 5};
+
+    auto res = Solution().combinationSum(list, 8);
+    for (const auto &item: res) {
+        print_vec(item);
+    }
+
     return 0;
 }
+

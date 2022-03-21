@@ -154,14 +154,63 @@ private:
 
 class Solution {
 private:
+    static void minDistance(const unordered_map<int, vector<int>> &graph, vector<int> &distance) {
+        queue<int> q;
+        int src = 0;
+
+        q.emplace(src);
+        distance[src] = 0;
+
+        while (!q.empty()) {
+            int x = q.front();
+            q.pop();
+            for (const auto &item: graph.at(x)) {
+                if (distance[item] == -1) {
+                    q.emplace(item);
+                    distance[item] = distance[x] + 1;
+                }
+            }
+        }
+    }
 
 public:
 
+    int networkBecomesIdle(vector<vector<int>> &edges, vector<int> &patience) {
+        unordered_map<int, vector<int>> graph;
 
+        for (const auto &edge: edges) { // build graph
+            int from = edge[0], to = edge[1];
+            graph.try_emplace(from, vector<int>());
+            graph.try_emplace(to, vector<int>());
+            graph[from].push_back(to);
+            graph[to].push_back(from);
+        }
 
+        vector<int> min_distance(patience.size(), -1); // count distance to zero
+        minDistance(graph, min_distance);
+
+        int res = 0;
+        for (int i = 1; i < patience.size(); ++i) {
+            int one_travel_time = (min_distance[i] << 1); // go & back cost
+            int travel_real_cost;
+            if (patience[i] > one_travel_time) {
+                travel_real_cost = one_travel_time;
+            } else {
+                travel_real_cost = (one_travel_time - 1) / patience[i] * patience[i] + one_travel_time;
+            }
+            res = std::max(res, travel_real_cost);
+        }
+
+        return res+1;
+    }
 };
 
 int main() {
+
+    vector<vector<int>> edges = {{0,1}, {0,2}, {1,2}};
+    vector<int> p = {0,10,10};
+
+    std::cout << Solution().networkBecomesIdle(edges, p) << std::endl;
 
     return 0;
 }

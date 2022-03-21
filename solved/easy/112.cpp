@@ -93,7 +93,7 @@ public:
     }
 };
 
-void print_vec(const vector<int> &arr) {
+void print_vec(vector<int> arr) {
     std::for_each(arr.begin(), arr.end(), [](const auto &i) { std::cout << i << " "; });
     cout << "\n";
 }
@@ -154,10 +154,28 @@ private:
 
 class Solution {
 private:
+    bool hasPath;
 
 public:
 
+    bool hasPathSum(TreeNode *root, int targetSum) {
+        hasPath = false;
+        helper(root, targetSum, 0);
+        return hasPath;
+    }
 
+    void helper(TreeNode *root, int target, int curSum) {
+        if (hasPath || root == nullptr) return;
+
+        curSum += root->val;
+        if (root->left == nullptr && root->right == nullptr) {
+            hasPath = curSum == target;
+            return;
+        }
+
+        helper(root->left, target, curSum);
+        helper(root->right, target, curSum);
+    }
 
 };
 

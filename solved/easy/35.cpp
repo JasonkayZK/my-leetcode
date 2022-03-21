@@ -93,7 +93,7 @@ public:
     }
 };
 
-void print_vec(const vector<int> &arr) {
+void print_vec(vector<int> arr) {
     std::for_each(arr.begin(), arr.end(), [](const auto &i) { std::cout << i << " "; });
     cout << "\n";
 }
@@ -157,7 +157,19 @@ private:
 
 public:
 
+    int searchInsert(vector<int> &nums, int target) {
 
+        int size = int(nums.size()), left = 0, right = size - 1;
+
+        while (left <= right) {
+            int mid = ((right - left) >> 1) + left;
+            if (nums[mid] == target) return mid;
+            else if (nums[mid] < target) left = mid + 1;
+            else right = mid - 1;
+        }
+
+        return left;
+    }
 
 };
 

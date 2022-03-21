@@ -156,9 +156,25 @@ class Solution {
 private:
 
 public:
+    int majorityElement(vector<int> &nums) {
+        int size = nums.size();
+        if (size <= 0) return -1;
+        if (size == 1) return nums[0];
 
-
-
+        int res = nums[0], cnt = 1;
+        for (int i = 1; i < size; ++i) {
+            if (nums[i] == res) {
+                cnt++;
+            } else {
+                cnt--;
+                if (cnt == 0) {
+                    res = nums[i];
+                    cnt = 1;
+                }
+            }
+        }
+        return int(std::count_if(nums.begin(), nums.end(), [&](const int &val) -> bool {return val == res; })) > size / 2 ? res : -1;
+    }
 };
 
 int main() {

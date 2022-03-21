@@ -157,7 +157,23 @@ private:
 
 public:
 
+    bool isPalindrome(string s) {
+        int size = s.size(), left = 0, right = size - 1;
+        if (size <= 0) return true;
 
+        while (left < right) {
+            while (left < right && !isalnum(s[left])) ++left;
+            while (left < right && !isalnum(s[right])) --right;
+
+            if (left < right) {
+                if (tolower(s[left]) != tolower(s[right])) return false;
+                ++left;
+                --right;
+            }
+        }
+
+        return true;
+    }
 
 };
 

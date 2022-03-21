@@ -93,7 +93,7 @@ public:
     }
 };
 
-void print_vec(const vector<int> &arr) {
+void print_vec(vector<int> arr) {
     std::for_each(arr.begin(), arr.end(), [](const auto &i) { std::cout << i << " "; });
     cout << "\n";
 }
@@ -155,9 +155,36 @@ private:
 class Solution {
 private:
 
+    unordered_map<char, int> romanMapper{
+            {'I', 1},
+            {'V', 5},
+            {'X', 10},
+            {'L', 50},
+            {'C', 100},
+            {'D', 500},
+            {'M', 1000},
+    };
+
 public:
 
+    int romanToInt(string s) {
+        int res = 0, size = int(s.size());
 
+        for (int i = 0; i < size; ++i) {
+            if (i == size - 1) {
+                res += romanMapper[s[i]];
+                break;
+            }
+
+            if (romanMapper[s[i+1]] > romanMapper[s[i]]) {
+                res -= romanMapper[s[i]];
+            } else {
+                res += romanMapper[s[i]];
+            }
+        }
+
+        return res;
+    }
 
 };
 

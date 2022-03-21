@@ -93,7 +93,7 @@ public:
     }
 };
 
-void print_vec(const vector<int> &arr) {
+void print_vec(vector<int> arr) {
     std::for_each(arr.begin(), arr.end(), [](const auto &i) { std::cout << i << " "; });
     cout << "\n";
 }
@@ -157,7 +157,17 @@ private:
 
 public:
 
-
+    vector<vector<int>> generate(int numRows) {
+        vector<vector<int>>ans(numRows);
+        for (int i = 0; i < numRows; i++) {
+            ans[i].resize(i + 1);// 确定行中的元素个数
+            ans[i][0] = ans[i][i] = 1;// 杨辉三角中第一个元素和最后一个元素都是1
+            for (int j = 1; j < i; j++) {
+                ans[i][j] = ans[i - 1][j] + ans[i - 1][j - 1];// 该元素由上一行与之对应的元素和上一行对应元素的左边的值 相加得来
+            }
+        }
+        return ans;
+    }
 
 };
 

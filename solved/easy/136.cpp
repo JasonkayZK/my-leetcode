@@ -157,7 +157,10 @@ private:
 
 public:
 
-
+    int singleNumber(vector<int> &nums) {
+        if (nums.empty()) return -1;
+        return std::accumulate(nums.begin(), nums.end(), 0, bit_xor<>());
+    }
 
 };
 
