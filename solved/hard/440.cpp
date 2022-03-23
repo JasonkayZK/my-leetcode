@@ -155,10 +155,30 @@ private:
 class Solution {
 private:
 
+    ll get_lower_count(ll prefix, ll bound) {
+        ll cnt = 0;
+        for(ll a= prefix, b=prefix+1; a <= bound; a*=10, b*=10) {
+            cnt += min(bound+1, b) - a;
+        }
+        return cnt;
+    }
+
 public:
 
-
-
+    int findKthNumber(int n, int k) {
+        ll prefix = 1, pos = 1;
+        while (pos < k) { // slow move
+            ll cnt = get_lower_count(prefix, n);
+            if (pos + cnt > k){
+                prefix *= 10;
+                pos++;
+            } else { // fast move
+                prefix++;
+                pos += cnt;
+            }
+        }
+        return int(prefix);
+    }
 };
 
 int main() {

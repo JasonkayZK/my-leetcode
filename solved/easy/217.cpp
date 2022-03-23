@@ -14,9 +14,9 @@
 
 using namespace std;
 
-using pii = pair<int, int>;
-using ll = long long;
-using pic = pair<int, char>;
+using PII = pair<int, int>;
+using LL = long long;
+using PIC = pair<int, char>;
 
 // Definition for a binary tree node.
 class TreeNode {
@@ -157,7 +157,19 @@ private:
 
 public:
 
+    bool containsDuplicate(vector<int>& nums) {
+        unordered_set<int> s;
 
+        for (const auto &item : nums) {
+            if (s.count(item) > 0) {
+                return true;
+            } else {
+                s.insert(item);
+            }
+        }
+
+        return false;
+    }
 
 };
 

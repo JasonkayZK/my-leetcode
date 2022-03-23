@@ -157,11 +157,31 @@ private:
 
 public:
 
+    int dominantIndex(vector<int> &nums) {
+        int n = int(nums.size());
+        if (n <= 0) return -1;
 
+        int res = 0;
+        bool twice_bigger = true;
+
+        for (int i = 1; i < n; ++i) {
+            if (nums[i] < nums[res]) {
+                twice_bigger = twice_bigger && (nums[res] >> 1) >= nums[i];
+            } else {
+                twice_bigger = (nums[i] >> 1) >= nums[res];
+                res = i;
+            }
+        }
+
+        return twice_bigger ? res : -1;
+    }
 
 };
 
 int main() {
+
+    vector<int> l = {1, 0};
+    Solution().dominantIndex(l);
 
     return 0;
 }
