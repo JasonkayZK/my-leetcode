@@ -34,19 +34,3 @@ vector <string> split(const string &s, const char delimiter) {
     }
     return tokens;
 }
-
-int rob_helper(const vector<int> &nums, int start, int end) {
-    int n = end - start;
-    if (n <= 0) return 0;
-    if (n == 1) return nums[start];
-    if (n == 2) return max(nums[start], nums[end-1]);
-
-    vector<int> dp(n);
-    dp[0] = nums[start];
-    dp[1] = max(nums[start], nums[start+1]);
-    for (int i = 2; i < n; ++i) {
-        dp[i] = max(dp[i - 2] + nums[start+i], dp[i - 1]);
-    }
-
-    return dp[n - 1];
-}
