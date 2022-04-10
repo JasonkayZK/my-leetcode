@@ -19,12 +19,6 @@ void print_vec(const vector<int> &arr) {
     cout << "\n";
 }
 
-void swap(vector<int> &nums, int i, int j) {
-    int temp = nums[i];
-    nums[i] = nums[j];
-    nums[j] = temp;
-}
-
 vector <string> split(const string &s, const char delimiter) {
     vector <string> tokens;
     string token;

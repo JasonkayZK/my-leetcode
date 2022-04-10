@@ -28,8 +28,6 @@ using pic = std::pair<int, char>;
 
 void print_vec(const std::vector<int> &arr);
 
-void swap(std::vector<int> &nums, int i, int j);
-
 std::vector<std::string> split(const std::string &s, char delimiter);
 
 template<typename addable>
