@@ -20,16 +20,46 @@
 #include <sstream>
 #include <list>
 #include <set>
+#include <functional>
+#include <algorithm>
+#include <fstream>
+#include <sstream>
+#include <iomanip>
+#include <cstring>
+#include <cassert>
+#include <cstdio>
+#include <bitset>
+#include <ctime>
 
 using namespace std;
+
+#define debug(...) _debug(#__VA_ARGS__, __VA_ARGS__)
+
+template<typename T>
+inline void _debug(const char *format, T t) {
+    cerr << format << '=' << t << endl;
+}
+
+template<class First, class... Rest>
+inline void _debug(const char *format, First first, Rest... rest) {
+    while (*format != ',') cerr << *format++;
+    cerr << '=' << first << ",";
+    _debug(format + 1, rest...);
+}
+
+template<typename T>
+ostream &operator<<(ostream &os, const vector<T> &V) {
+    os << "[ ";
+    for (const auto &vv: V) os << vv << ", ";
+    os << "]";
+    return os;
+}
 
 using pii = std::pair<int, int>;
 using ll = long long;
 using pic = std::pair<int, char>;
 
 bool is_valid_pos(int x, int y, int m, int n);
-
-void print_vec(const std::vector<int> &arr);
 
 std::vector<std::string> split(const std::string &s, char delimiter);
 
