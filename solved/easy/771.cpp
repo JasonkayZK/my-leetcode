@@ -3,14 +3,24 @@
 #include "data_structure/tree.h"
 #include "data_structure/trie.h"
 #include "data_structure/segment_tree.h"
-#include "data_structure/union_find.h"
 
 class Solution {
 private:
 
 public:
 
+    int numJewelsInStones(string jewels, string stones) {
+        unordered_set<char> s;
+        for (const auto &item: jewels) {
+            s.emplace(item);
+        }
 
+        int res = 0;
+        for (const auto &item: stones) {
+            if (s.count(item) > 0) res++;
+        }
+        return res;
+    }
 
 };
 
