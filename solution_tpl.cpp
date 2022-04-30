@@ -15,6 +15,15 @@ public:
 };
 
 int main() {
+    int a = 2;
+    string s = "123";
+    vector<int> v{1, 2, 3};
+    unordered_map<string, int> m{{"a", 1},
+                                 {"b", 2}};
+    unordered_set<string> se{"a", "b"};
+
+    fmt::print(fg(fmt::color::crimson) | fmt::emphasis::bold,
+               "a: {}, s: {}, v: {}, m: {}, se: {}\n", a, s, v, m, se);
 
     return 0;
 }

@@ -32,6 +32,11 @@
 #include <ctime>
 #include <type_traits>
 
+// fmt
+#include "fmt/core.h"
+#include "fmt/ranges.h"
+#include "fmt/color.h"
+
 using namespace std;
 
 template<typename T>
