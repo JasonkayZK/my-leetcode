@@ -10,11 +10,18 @@ private:
 
 public:
 
-
+    int titleToNumber(string columnTitle) {
+        long long res = 0;
+        for (const auto &item: columnTitle) {
+            res = res * 26 + item - 'A' + 1;
+        }
+        return res;
+    }
 
 };
 
 int main() {
+    "FXSHRXW"
 
     return 0;
 }
