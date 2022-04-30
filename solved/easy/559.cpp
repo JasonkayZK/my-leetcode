@@ -10,7 +10,15 @@ private:
 
 public:
 
+    int maxDepth(Node *root) {
+        if (root == nullptr) return 0;
 
+        int cur_max = 0;
+        for (const auto &item: root->children) {
+            cur_max = max(cur_max, maxDepth(item));
+        }
+        return cur_max + 1;
+    }
 
 };
 
