@@ -31,6 +31,7 @@
 #include <bitset>
 #include <ctime>
 #include <type_traits>
+#include <cstdint>
 
 // fmt
 #include "fmt/core.h"
