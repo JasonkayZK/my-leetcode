@@ -22,7 +22,7 @@ elseif (WINDOWS)
     link_directories(${BOOST_ROOT}\\stage\\lib) # library files searching path
 endif ()
 
-add_executable(solution_tpl solution_tpl.cpp utils/utils.cpp utils/utils.h data_structure/tree.cpp data_structure/tree.h data_structure/list.cpp data_structure/list.h data_structure/trie.cpp data_structure/trie.h data_structure/segment_tree.cpp data_structure/segment_tree.h data_structure/union_find.h)
+add_executable(solution_tpl solution_tpl.cc utils/utils.cpp utils/utils.h data_structure/tree.cpp data_structure/tree.h data_structure/list.cpp data_structure/list.h data_structure/trie.cpp data_structure/trie.h data_structure/segment_tree.cpp data_structure/segment_tree.h data_structure/union_find.h)
 
 find_package(fmt CONFIG REQUIRED)
 target_link_libraries(solution_tpl PRIVATE fmt::fmt)
