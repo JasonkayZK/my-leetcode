@@ -6,24 +6,23 @@
 #include "data_structure/union_find.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    string largestOddNumber(string num) {
-        int n = int(num.size());
-        for (int i = n - 1; i >= 0; --i) {
-            if ((num[i] - '0') % 2 == 1) { // find first odd backward
-                return num.substr(0, i + 1);
-            }
-        }
-        return "";
+  string largestOddNumber(string num) {
+    int n = int(num.size());
+    for (int i = n - 1; i >= 0; --i) {
+      if ((num[i] - '0') % 2 == 1) { // find first odd backward
+        return num.substr(0, i + 1);
+      }
     }
+    return "";
+  }
 
 };
 
 int main() {
 
-
-    return 0;
+  return 0;
 }

@@ -4,18 +4,17 @@
 #include "data_structure/trie.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    int countOdds(int low, int high) {
-        return (high - low) / 2 + ((low & 1) == 1 || (high & 1) == 1 ? 1 : 0);
-    }
+  int countOdds(int low, int high) {
+    return (high - low) / 2 + ((low & 1) == 1 || (high & 1) == 1 ? 1 : 0);
+  }
 
 };
 
 int main() {
 
-
-    return 0;
+  return 0;
 }

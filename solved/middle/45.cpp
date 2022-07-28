@@ -4,30 +4,29 @@
 #include "data_structure/trie.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    int jump(vector<int>& nums) {
-        int n = nums.size();
-        if (n <= 1) return 0;
+  int jump(vector<int> &nums) {
+    int n = nums.size();
+    if (n <= 1) return 0;
 
-        int r = 0, cur = 0, res = 0;
-        for (int i = 0; i < n-1; ++i) {
-            r = max(r, i + nums[i]);
-            if (cur == i) {
-                cur = r;
-                res++;
-            }
-        }
-
-        return res;
+    int r = 0, cur = 0, res = 0;
+    for (int i = 0; i < n - 1; ++i) {
+      r = max(r, i + nums[i]);
+      if (cur == i) {
+        cur = r;
+        res++;
+      }
     }
+
+    return res;
+  }
 
 };
 
 int main() {
 
-
-    return 0;
+  return 0;
 }

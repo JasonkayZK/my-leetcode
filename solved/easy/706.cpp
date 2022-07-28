@@ -39,54 +39,55 @@ public:
 
 /* Method 2: Zipper */
 class MyHashMap {
-private:
-    static const int base = 769;
+ private:
+  static const int base = 769;
 
-    vector<list<pair<int, int>>> m;
+  vector<list<pair < int, int>>>
+  m;
 
-    static int hash(int key) {
-        return key % base;
+  static int hash(int key) {
+    return key % base;
+  }
+
+ public:
+  MyHashMap() : m(base) {}
+
+  void put(int key, int value) {
+    int h = hash(key);
+
+    auto it = std::find_if(m[h].begin(), m[h].end(),
+                           [&key](auto e) { return e.first == key; });
+    if (it != m[h].end()) { // found
+      it->second = value;
+    } else { // not found
+      m[h].push_back(make_pair(key, value));
     }
+  }
 
-public:
-    MyHashMap() : m(base) {}
+  int get(int key) {
+    int h = hash(key);
 
-    void put(int key, int value) {
-        int h = hash(key);
-
-        auto it = std::find_if(m[h].begin(), m[h].end(),
-                               [&key](auto e) { return e.first == key; });
-        if (it != m[h].end()) { // found
-            it->second = value;
-        } else { // not found
-            m[h].push_back(make_pair(key, value));
-        }
+    auto it = std::find_if(m[h].begin(), m[h].end(),
+                           [&key](auto e) { return e.first == key; });
+    if (it != m[h].end()) { // found
+      return it->second;
+    } else { // not found
+      return -1;
     }
+  }
 
-    int get(int key) {
-        int h = hash(key);
+  void remove(int key) {
+    int h = hash(key);
 
-        auto it = std::find_if(m[h].begin(), m[h].end(),
-                               [&key](auto e) { return e.first == key; });
-        if (it != m[h].end()) { // found
-            return it->second;
-        } else { // not found
-            return -1;
-        }
+    auto it = std::find_if(m[h].begin(), m[h].end(),
+                           [&key](auto e) { return e.first == key; });
+    if (it != m[h].end()) { // found
+      it->second = -1;
     }
-
-    void remove(int key) {
-        int h = hash(key);
-
-        auto it = std::find_if(m[h].begin(), m[h].end(),
-                               [&key](auto e) { return e.first == key; });
-        if (it != m[h].end()) { // found
-            it->second = -1;
-        }
-    }
+  }
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

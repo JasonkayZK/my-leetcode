@@ -20,197 +20,197 @@ using PIC = pair<int, char>;
 
 // Definition for a binary tree node.
 class TreeNode {
-public:
-    int val;
-    TreeNode *left;
-    TreeNode *right;
+ public:
+  int val;
+  TreeNode *left;
+  TreeNode *right;
 
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+  TreeNode() : val(0), left(nullptr), right(nullptr) {}
 
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
 
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+  TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
 // Definition for singly-linked list.
 class ListNode {
-public:
-    int val;
-    ListNode *next;
+ public:
+  int val;
+  ListNode *next;
 
-    ListNode() : val(0), next(nullptr) {}
+  ListNode() : val(0), next(nullptr) {}
 
-    ListNode(int x) : val(x), next(nullptr) {}
+  ListNode(int x) : val(x), next(nullptr) {}
 
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
+  ListNode(int x, ListNode *next) : val(x), next(next) {}
 
-    static ListNode *build_node(const vector<int> &vec);
+  static ListNode *build_node(const vector<int> &vec);
 
-    void print() {
+  void print() {
 
-        auto head = this;
+    auto head = this;
 
-        std::cout << "[";
+    std::cout << "[";
 
-        while (head) {
-            std::cout << head->val << ", ";
-            head = head->next;
-        }
-
-        std::cout << "]" << std::endl;
+    while (head) {
+      std::cout << head->val << ", ";
+      head = head->next;
     }
+
+    std::cout << "]" << std::endl;
+  }
 
 };
 
 ListNode *ListNode::build_node(const vector<int> &vec) {
 
-    auto *dummy = new ListNode(0);
-    auto res = dummy;
+  auto *dummy = new ListNode(0);
+  auto res = dummy;
 
-    for (const auto &item: vec) {
-        res->next = new ListNode(item);
-        res = res->next;
-    }
+  for (const auto &item : vec) {
+    res->next = new ListNode(item);
+    res = res->next;
+  }
 
-    return dummy->next;
+  return dummy->next;
 }
 
 // Definition for a Node.
 class Node {
-public:
-    int val;
-    vector<Node *> children;
+ public:
+  int val;
+  vector<Node *> children;
 
-    Node() {}
+  Node() {}
 
-    Node(int _val) {
-        val = _val;
-    }
+  Node(int _val) {
+    val = _val;
+  }
 
-    Node(int _val, vector<Node *> _children) {
-        val = _val;
-        children = _children;
-    }
+  Node(int _val, vector<Node *> _children) {
+    val = _val;
+    children = _children;
+  }
 };
 
 void print_vec(const vector<int> &arr) {
-    std::for_each(arr.begin(), arr.end(), [](const auto &i) { std::cout << i << " "; });
-    cout << "\n";
+  std::for_each(arr.begin(), arr.end(), [](const auto &i) { std::cout << i << " "; });
+  cout << "\n";
 }
 
 void swap(vector<int> &nums, int i, int j) {
-    int temp = nums[i];
-    nums[i] = nums[j];
-    nums[j] = temp;
+  int temp = nums[i];
+  nums[i] = nums[j];
+  nums[j] = temp;
 }
 
 vector<string> split(const string &s, const char delimiter) {
-    vector<string> tokens;
-    string token;
-    istringstream token_stream(s);
-    while (getline(token_stream, token, delimiter)) {
-        tokens.push_back(token);
-    }
-    return tokens;
+  vector<string> tokens;
+  string token;
+  istringstream token_stream(s);
+  while (getline(token_stream, token, delimiter)) {
+    tokens.push_back(token);
+  }
+  return tokens;
 }
 
 class TrieTree {
-public:
-    TrieTree() {
-        this->children = vector<TrieTree *>(26, nullptr);
-        this->isEnd = false;
+ public:
+  TrieTree() {
+    this->children = vector<TrieTree *>(26, nullptr);
+    this->isEnd = false;
+  }
+
+  void insert(const string &word) {
+    TrieTree *node = this;
+    for (const auto &item : word) {
+      int idx = item - 'a';
+      if (node->children[idx] == nullptr) {
+        node->children[idx] = new TrieTree();
+      }
+
+      node = node->children[idx];
     }
 
-    void insert(const string &word) {
-        TrieTree *node = this;
-        for (const auto &item: word) {
-            int idx = item - 'a';
-            if (node->children[idx] == nullptr) {
-                node->children[idx] = new TrieTree();
-            }
+    node->isEnd = true;
+  }
 
-            node = node->children[idx];
-        }
-
-        node->isEnd = true;
+  bool search(const string &word) {
+    TrieTree *node = this;
+    for (const auto &item : word) {
+      int idx = item - 'a';
+      if (node->children[idx] == nullptr) {
+        return false;
+      }
+      node = node->children[idx];
     }
+    return node->isEnd;
+  }
 
-    bool search(const string &word) {
-        TrieTree *node = this;
-        for (const auto &item: word) {
-            int idx = item - 'a';
-            if (node->children[idx] == nullptr) {
-                return false;
-            }
-            node = node->children[idx];
-        }
-        return node->isEnd;
-    }
-
-private:
-    vector<TrieTree *> children;
-    bool isEnd;
+ private:
+  vector<TrieTree *> children;
+  bool isEnd;
 };
 
 class Solution {
-private:
-    static void minDistance(const unordered_map<int, vector<int>> &graph, vector<int> &distance) {
-        queue<int> q;
-        int src = 0;
+ private:
+  static void minDistance(const unordered_map<int, vector<int>> &graph, vector<int> &distance) {
+    queue<int> q;
+    int src = 0;
 
-        q.emplace(src);
-        distance[src] = 0;
+    q.emplace(src);
+    distance[src] = 0;
 
-        while (!q.empty()) {
-            int x = q.front();
-            q.pop();
-            for (const auto &item: graph.at(x)) {
-                if (distance[item] == -1) {
-                    q.emplace(item);
-                    distance[item] = distance[x] + 1;
-                }
-            }
+    while (!q.empty()) {
+      int x = q.front();
+      q.pop();
+      for (const auto &item : graph.at(x)) {
+        if (distance[item] == -1) {
+          q.emplace(item);
+          distance[item] = distance[x] + 1;
         }
+      }
+    }
+  }
+
+ public:
+
+  int networkBecomesIdle(vector<vector<int>> &edges, vector<int> &patience) {
+    unordered_map<int, vector<int>> graph;
+
+    for (const auto &edge : edges) { // build graph
+      int from = edge[0], to = edge[1];
+      graph.try_emplace(from, vector<int>());
+      graph.try_emplace(to, vector<int>());
+      graph[from].push_back(to);
+      graph[to].push_back(from);
     }
 
-public:
+    vector<int> min_distance(patience.size(), -1); // count distance to zero
+    minDistance(graph, min_distance);
 
-    int networkBecomesIdle(vector<vector<int>> &edges, vector<int> &patience) {
-        unordered_map<int, vector<int>> graph;
-
-        for (const auto &edge: edges) { // build graph
-            int from = edge[0], to = edge[1];
-            graph.try_emplace(from, vector<int>());
-            graph.try_emplace(to, vector<int>());
-            graph[from].push_back(to);
-            graph[to].push_back(from);
-        }
-
-        vector<int> min_distance(patience.size(), -1); // count distance to zero
-        minDistance(graph, min_distance);
-
-        int res = 0;
-        for (int i = 1; i < patience.size(); ++i) {
-            int one_travel_time = (min_distance[i] << 1); // go & back cost
-            int travel_real_cost;
-            if (patience[i] > one_travel_time) {
-                travel_real_cost = one_travel_time;
-            } else {
-                travel_real_cost = (one_travel_time - 1) / patience[i] * patience[i] + one_travel_time;
-            }
-            res = std::max(res, travel_real_cost);
-        }
-
-        return res+1;
+    int res = 0;
+    for (int i = 1; i < patience.size(); ++i) {
+      int one_travel_time = (min_distance[i] << 1); // go & back cost
+      int travel_real_cost;
+      if (patience[i] > one_travel_time) {
+        travel_real_cost = one_travel_time;
+      } else {
+        travel_real_cost = (one_travel_time - 1) / patience[i] * patience[i] + one_travel_time;
+      }
+      res = std::max(res, travel_real_cost);
     }
+
+    return res + 1;
+  }
 };
 
 int main() {
 
-    vector<vector<int>> edges = {{0,1}, {0,2}, {1,2}};
-    vector<int> p = {0,10,10};
+  vector<vector<int>> edges = {{0, 1}, {0, 2}, {1, 2}};
+  vector<int> p = {0, 10, 10};
 
-    std::cout << Solution().networkBecomesIdle(edges, p) << std::endl;
+  std::cout << Solution().networkBecomesIdle(edges, p) << std::endl;
 
-    return 0;
+  return 0;
 }

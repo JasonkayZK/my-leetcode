@@ -6,26 +6,26 @@
 #include "data_structure/union_find.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    string convertToTitle(int columnNumber) {
-        string res;
-        while (columnNumber > 0) {
-            --columnNumber;
-            int residue = columnNumber % 26;
-            res.push_back('A' + residue);
-            columnNumber /= 26;
-        }
-        reverse(res.begin(), res.end());
-        return res;
+  string convertToTitle(int columnNumber) {
+    string res;
+    while (columnNumber > 0) {
+      --columnNumber;
+      int residue = columnNumber % 26;
+      res.push_back('A' + residue);
+      columnNumber /= 26;
     }
+    reverse(res.begin(), res.end());
+    return res;
+  }
 
 };
 
 int main() {
-    debug(char(char(25-1) + 'A'));
+  debug(char(char(25 - 1) + 'A'));
 
-    return 0;
+  return 0;
 }

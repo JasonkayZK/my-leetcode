@@ -6,29 +6,27 @@
 #include "data_structure/union_find.h"
 
 class Solution {
-public:
+ public:
 
-    vector<int> sumZero(int n) {
-        if (n <= 0) return {};
+  vector<int> sumZero(int n) {
+    if (n <= 0) return {};
 
-        int cnt = n / 2;
-        vector<int> res;
-        if ((n & 1) == 1) res.push_back(0);
-        while (cnt > 0) {
-            res.push_back(-cnt);
-            res.push_back(cnt);
-            --cnt;
-        }
-        return res;
+    int cnt = n / 2;
+    vector<int> res;
+    if ((n & 1) == 1) res.push_back(0);
+    while (cnt > 0) {
+      res.push_back(-cnt);
+      res.push_back(cnt);
+      --cnt;
     }
+    return res;
+  }
 
-private:
-
+ private:
 
 };
 
 int main() {
 
-
-    return 0;
+  return 0;
 }

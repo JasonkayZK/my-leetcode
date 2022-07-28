@@ -16,15 +16,15 @@
 using namespace std;
 
 class Solution {
-public:
-    int maxArea(vector<int> &height) {
-        int len = height.size(), l = 0, r = len - 1, max = 0;
-        while (l < r) {
-            int size = (r - l) * min(height[l], height[r]);
-            max = size > max ? size : max;
-            if (height[l] < height[r]) l++;
-            else r--;
-        }
-        return max;
+ public:
+  int maxArea(vector<int> &height) {
+    int len = height.size(), l = 0, r = len - 1, max = 0;
+    while (l < r) {
+      int size = (r - l) * min(height[l], height[r]);
+      max = size > max ? size : max;
+      if (height[l] < height[r]) l++;
+      else r--;
     }
+    return max;
+  }
 };

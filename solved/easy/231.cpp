@@ -5,17 +5,17 @@
 #include "data_structure/segment_tree.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    bool isPowerOfTwo(int n) {
-        return n > 0 && (n & (n - 1)) == 0;
-    }
+  bool isPowerOfTwo(int n) {
+    return n > 0 && (n & (n - 1)) == 0;
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

@@ -6,34 +6,31 @@
 #include "data_structure/union_find.h"
 
 class Solution {
-public:
+ public:
 
-    vector<int> diStringMatch(string s) {
-        int n = int(s.size());
-        if (n <= 0) return {};
+  vector<int> diStringMatch(string s) {
+    int n = int(s.size());
+    if (n <= 0) return {};
 
-        int left = 0, right = n;
-        vector<int> v;
-        for (int i = 0; i < n; ++i) {
-            if (s[i] == 'I') {
-                v.push_back(left++);
-            } else {
-                v.push_back(right--);
-            }
-        }
-        v.push_back(left);
-
-        return v;
+    int left = 0, right = n;
+    vector<int> v;
+    for (int i = 0; i < n; ++i) {
+      if (s[i] == 'I') {
+        v.push_back(left++);
+      } else {
+        v.push_back(right--);
+      }
     }
+    v.push_back(left);
 
-private:
+    return v;
+  }
 
-
+ private:
 
 };
 
 int main() {
 
-
-    return 0;
+  return 0;
 }

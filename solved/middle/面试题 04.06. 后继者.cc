@@ -27,38 +27,38 @@ public:
 
 /* Solution 2: BFS Method (in-order traversal) */
 class Solution {
-public:
+ public:
 
-    TreeNode *inorderSuccessor(TreeNode *root, TreeNode *p) {
-        if (root == nullptr || p == nullptr) return nullptr;
+  TreeNode *inorderSuccessor(TreeNode *root, TreeNode *p) {
+    if (root == nullptr || p == nullptr) return nullptr;
 
-        stack < TreeNode * > st;
-        TreeNode *cur = root, *prev = nullptr;
-        while (!st.empty() || cur != nullptr) {
-            while (cur != nullptr) {
-                st.emplace(cur);
-                cur = cur->left;
-            }
-            cur = st.top();
-            st.pop();
-            if (prev == p) {
-                return cur;
-            }
-            prev = cur;
-            cur = cur->right;
-        }
-
-        return nullptr;
+    stack < TreeNode * > st;
+    TreeNode *cur = root, *prev = nullptr;
+    while (!st.empty() || cur != nullptr) {
+      while (cur != nullptr) {
+        st.emplace(cur);
+        cur = cur->left;
+      }
+      cur = st.top();
+      st.pop();
+      if (prev == p) {
+        return cur;
+      }
+      prev = cur;
+      cur = cur->right;
     }
+
+    return nullptr;
+  }
 };
 
 int main() {
 
-    auto *root = new TreeNode(2);
-    root->left = new TreeNode(1);
-    root->right = new TreeNode(3);
+  auto *root = new TreeNode(2);
+  root->left = new TreeNode(1);
+  root->right = new TreeNode(3);
 
-    std::cout << Solution().inorderSuccessor(root, new TreeNode(1));
+  std::cout << Solution().inorderSuccessor(root, new TreeNode(1));
 
-    return 0;
+  return 0;
 }

@@ -5,30 +5,30 @@
 #include "data_structure/segment_tree.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    bool checkPerfectNumber(int num) {
-        if (num == 1) {
-            return false;
-        }
-
-        int sum = 1;
-        for (int d = 2; d * d <= num; ++d) {
-            if (num % d == 0) {
-                sum += d;
-                if (d * d < num) {
-                    sum += num / d;
-                }
-            }
-        }
-        return sum == num;
+  bool checkPerfectNumber(int num) {
+    if (num == 1) {
+      return false;
     }
+
+    int sum = 1;
+    for (int d = 2; d * d <= num; ++d) {
+      if (num % d == 0) {
+        sum += d;
+        if (d * d < num) {
+          sum += num / d;
+        }
+      }
+    }
+    return sum == num;
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

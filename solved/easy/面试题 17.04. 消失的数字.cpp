@@ -5,22 +5,22 @@
 #include "data_structure/segment_tree.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    int missingNumber(vector<int> &nums) {
-        int n = int(nums.size());
-        if (n <= 0) return 0;
+  int missingNumber(vector<int> &nums) {
+    int n = int(nums.size());
+    if (n <= 0) return 0;
 
-        long long sum = n * (n + 1) / 2;
+    long long sum = n * (n + 1) / 2;
 
-        return sum - accumulate(nums.begin(), nums.end(), 0);
-    }
+    return sum - accumulate(nums.begin(), nums.end(), 0);
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

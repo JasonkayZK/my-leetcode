@@ -14,13 +14,13 @@
 using namespace std;
 
 class Solution {
-public:
-    int minMoves(vector<int>& nums) {
-        int min = *min_element (nums.begin(), nums.end());
-        int res = 0;
-        for (const auto &item : nums) {
-            res += item - min;
-        }
-        return res;
+ public:
+  int minMoves(vector<int> &nums) {
+    int min = *min_element(nums.begin(), nums.end());
+    int res = 0;
+    for (const auto &item : nums) {
+      res += item - min;
     }
+    return res;
+  }
 };

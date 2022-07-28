@@ -8,20 +8,20 @@
 #include "../utils/utils.h"
 
 class SegmentTree {
-private:
-    vector<int> tree;
+ private:
+  vector<int> tree;
 
-public:
+ public:
 
-    SegmentTree();
+  SegmentTree();
 
-    explicit SegmentTree(int init_size);
+  explicit SegmentTree(int init_size);
 
-    void build(int node, int l, int r, const vector<int> &nums);
+  void build(int node, int l, int r, const vector<int> &nums);
 
-    void change(int index, int val, int node, int s, int e);
+  void change(int index, int val, int node, int s, int e);
 
-    int range(int left, int right, int node, int s, int e);
+  int range(int left, int right, int node, int s, int e);
 
 };
 

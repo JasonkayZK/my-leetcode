@@ -5,17 +5,17 @@
 #include "data_structure/segment_tree.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    bool rotateString(string s, string goal) {
-        return s.size() == goal.size() && (s+s).find(goal) != string::npos;
-    }
+  bool rotateString(string s, string goal) {
+    return s.size() == goal.size() && (s + s).find(goal) != string::npos;
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

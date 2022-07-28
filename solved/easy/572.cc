@@ -6,40 +6,39 @@
 #include "data_structure/union_find.h"
 
 class Solution {
-public:
+ public:
 
-    bool isSubtree(TreeNode *root, TreeNode *subRoot) {
-        if (root == nullptr && subRoot == nullptr) return true;
-        if (root == nullptr || subRoot == nullptr) return false;
+  bool isSubtree(TreeNode *root, TreeNode *subRoot) {
+    if (root == nullptr && subRoot == nullptr) return true;
+    if (root == nullptr || subRoot == nullptr) return false;
 
-        queue<TreeNode*> q;
-        q.emplace(root);
-        while (!q.empty()) {
-            int cnt = int(q.size());
-            for (int i = 0; i < cnt; ++i) {
-                auto* cur_node = q.front();
-                q.pop();
-                if (cur_node->val == subRoot->val && is_same(cur_node, subRoot))  return true;
+    queue < TreeNode * > q;
+    q.emplace(root);
+    while (!q.empty()) {
+      int cnt = int(q.size());
+      for (int i = 0; i < cnt; ++i) {
+        auto *cur_node = q.front();
+        q.pop();
+        if (cur_node->val == subRoot->val && is_same(cur_node, subRoot)) return true;
 
-                if (cur_node->left != nullptr) q.emplace(cur_node->left);
-                if (cur_node->right != nullptr) q.emplace(cur_node->right);
-            }
-        }
-        return false;
+        if (cur_node->left != nullptr) q.emplace(cur_node->left);
+        if (cur_node->right != nullptr) q.emplace(cur_node->right);
+      }
     }
+    return false;
+  }
 
-private:
+ private:
 
-    bool is_same(TreeNode *root1, TreeNode *root2) {
-        if (root1 == nullptr && root2 == nullptr) return true;
-        if (root1 == nullptr || root2 == nullptr) return false;
-        return root1->val == root2->val && is_same(root1->left, root2->left) && is_same(root1->right, root2->right);
-    }
+  bool is_same(TreeNode *root1, TreeNode *root2) {
+    if (root1 == nullptr && root2 == nullptr) return true;
+    if (root1 == nullptr || root2 == nullptr) return false;
+    return root1->val == root2->val && is_same(root1->left, root2->left) && is_same(root1->right, root2->right);
+  }
 
 };
 
 int main() {
 
-
-    return 0;
+  return 0;
 }

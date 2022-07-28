@@ -5,22 +5,22 @@
 #include "data_structure/segment_tree.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    void deleteNode(ListNode* node) {
-        if (node == nullptr) return;
-        if (node->next == nullptr) node = nullptr;
-        else {
-            node->val = node->next->val;
-            node->next = node->next->next;
-        }
+  void deleteNode(ListNode *node) {
+    if (node == nullptr) return;
+    if (node->next == nullptr) node = nullptr;
+    else {
+      node->val = node->next->val;
+      node->next = node->next->next;
     }
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

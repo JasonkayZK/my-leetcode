@@ -5,28 +5,28 @@
 #include "data_structure/segment_tree.h"
 
 class Solution {
-private:
+ private:
 
-    unordered_map<int, vector<int>> m;
+  unordered_map<int, vector<int>> m;
 
-public:
+ public:
 
-    Solution(vector<int> &nums) {
-        int n = int(nums.size());
+  Solution(vector<int> &nums) {
+    int n = int(nums.size());
 
-        for (int i = 0; i < n; ++i) {
-            m[nums[i]].push_back(i);
-        }
+    for (int i = 0; i < n; ++i) {
+      m[nums[i]].push_back(i);
     }
+  }
 
-    int pick(int target) {
-        int cnt = int(m[target].size());
-        return m[target][rand() % cnt];
-    }
+  int pick(int target) {
+    int cnt = int(m[target].size());
+    return m[target][rand() % cnt];
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

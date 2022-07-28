@@ -6,35 +6,33 @@
 #include "data_structure/union_find.h"
 
 class Solution {
-public:
+ public:
 
-    int minDeletionSize(vector <string> &strs) {
-        int n = int(strs.size());
-        if (n <= 1) return 0;
+  int minDeletionSize(vector<string> &strs) {
+    int n = int(strs.size());
+    if (n <= 1) return 0;
 
-        int str_len = int(strs[0].size());
-        if (str_len <= 1) return 0;
+    int str_len = int(strs[0].size());
+    if (str_len <= 1) return 0;
 
-        int cur = 0, res = 0;
-        while (cur < str_len) {
-            for (int i = 1; i < n; ++i) {
-                if (strs[i][cur] - strs[i - 1][cur] < 0) {
-                    ++res;
-                    break;
-                }
-            }
-            ++cur;
+    int cur = 0, res = 0;
+    while (cur < str_len) {
+      for (int i = 1; i < n; ++i) {
+        if (strs[i][cur] - strs[i - 1][cur] < 0) {
+          ++res;
+          break;
         }
-        return res;
+      }
+      ++cur;
     }
+    return res;
+  }
 
-private:
-
+ private:
 
 };
 
 int main() {
 
-
-    return 0;
+  return 0;
 }

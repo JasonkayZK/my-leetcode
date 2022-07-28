@@ -81,37 +81,37 @@ public:
 
 /* Method 3: Union Find */
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    int findCircleNum(vector<vector<int>> &isConnected) {
-        if (isConnected.empty() || isConnected[0].empty()) return 0;
-        int n = int(isConnected.size());
-        if (n <= 1) return n;
+  int findCircleNum(vector<vector<int>> &isConnected) {
+    if (isConnected.empty() || isConnected[0].empty()) return 0;
+    int n = int(isConnected.size());
+    if (n <= 1) return n;
 
-        UnionFind<int> uf{-1};
-        for (int i = 0; i < isConnected.size(); i++) {
-            uf.add(i);
-            for (int j = 0; j < i; j++) {
-                if (isConnected[i][j]) {
-                    uf.merge(i, j);
-                }
-            }
+    UnionFind<int> uf{-1};
+    for (int i = 0; i < isConnected.size(); i++) {
+      uf.add(i);
+      for (int j = 0; j < i; j++) {
+        if (isConnected[i][j]) {
+          uf.merge(i, j);
         }
-
-        return uf.get_strongly_connected_component_cnt();
+      }
     }
+
+    return uf.get_strongly_connected_component_cnt();
+  }
 
 };
 
 int main() {
-    int a = 666;
-    vector<int> b({1, 2, 3});
-    string c = "hello world";
+  int a = 666;
+  vector<int> b({1, 2, 3});
+  string c = "hello world";
 
-    // after
-    debug(a, b, c);  // a=666, b=[ 1, 2, 3, ], c=hello world
+  // after
+  debug(a, b, c);  // a=666, b=[ 1, 2, 3, ], c=hello world
 
-    return 0;
+  return 0;
 }

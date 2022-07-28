@@ -5,33 +5,32 @@
 #include "data_structure/segment_tree.h"
 
 const static string MORSE[26] = {
-        ".-", "-...", "-.-.", "-..", ".", "..-.", "--.",
-        "....", "..", ".---", "-.-", ".-..", "--", "-.",
-        "---", ".--.", "--.-", ".-.", "...", "-", "..-",
-        "...-", ".--", "-..-", "-.--", "--.."
+    ".-", "-...", "-.-.", "-..", ".", "..-.", "--.",
+    "....", "..", ".---", "-.-", ".-..", "--", "-.",
+    "---", ".--.", "--.-", ".-.", "...", "-", "..-",
+    "...-", ".--", "-..-", "-.--", "--.."
 };
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    int uniqueMorseRepresentations(vector<string> &words) {
-        unordered_set<string> seen;
-        for (auto &word: words) {
-            string code;
-            for (auto &c: word) {
-                code.append(MORSE[c - 'a']);
-            }
-            seen.emplace(code);
-        }
-        return seen.size();
+  int uniqueMorseRepresentations(vector<string> &words) {
+    unordered_set<string> seen;
+    for (auto &word : words) {
+      string code;
+      for (auto &c : word) {
+        code.append(MORSE[c - 'a']);
+      }
+      seen.emplace(code);
     }
-
+    return seen.size();
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

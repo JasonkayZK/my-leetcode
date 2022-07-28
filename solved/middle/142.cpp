@@ -5,34 +5,34 @@
 #include "data_structure/segment_tree.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    ListNode *detectCycle(ListNode *head) {
-        auto fast = head;
-        auto slow = head;
+  ListNode *detectCycle(ListNode *head) {
+    auto fast = head;
+    auto slow = head;
 
-        while (fast != nullptr && fast->next != nullptr) {
-            fast = fast->next->next;
-            slow = slow->next;
+    while (fast != nullptr && fast->next != nullptr) {
+      fast = fast->next->next;
+      slow = slow->next;
 
-            if (fast == slow) { // Have rings
-                fast = head;
-                while (fast != slow) {
-                    fast = fast->next;
-                    slow = slow->next;
-                }
-                return slow;
-            }
+      if (fast == slow) { // Have rings
+        fast = head;
+        while (fast != slow) {
+          fast = fast->next;
+          slow = slow->next;
         }
-
-        return nullptr;
+        return slow;
+      }
     }
+
+    return nullptr;
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

@@ -6,24 +6,23 @@
 #include "data_structure/union_find.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    int maxDepth(Node *root) {
-        if (root == nullptr) return 0;
+  int maxDepth(Node *root) {
+    if (root == nullptr) return 0;
 
-        int cur_max = 0;
-        for (const auto &item: root->children) {
-            cur_max = max(cur_max, maxDepth(item));
-        }
-        return cur_max + 1;
+    int cur_max = 0;
+    for (const auto &item : root->children) {
+      cur_max = max(cur_max, maxDepth(item));
     }
+    return cur_max + 1;
+  }
 
 };
 
 int main() {
 
-
-    return 0;
+  return 0;
 }

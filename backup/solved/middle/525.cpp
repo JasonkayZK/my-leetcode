@@ -13,16 +13,16 @@ using namespace std;
 
 class Solution {
 /* 前缀和 + HashMap */
-public:
-    int findMaxLength(vector<int> &nums) {
-        unordered_map<int, int> mp;
-        int res = 0, counter = 0;
-        mp[0] = -1;
+ public:
+  int findMaxLength(vector<int> &nums) {
+    unordered_map<int, int> mp;
+    int res = 0, counter = 0;
+    mp[0] = -1;
 
-        for (int i = 0, n = nums.size(); i < n; ++i) {
-            nums[i] ? counter++ : counter--;
-            mp.count(counter) ? res = max(res, i - mp[counter]) : mp[counter] = i;
-        }
-        return res;
+    for (int i = 0, n = nums.size(); i < n; ++i) {
+      nums[i] ? counter++ : counter--;
+      mp.count(counter) ? res = max(res, i - mp[counter]) : mp[counter] = i;
     }
+    return res;
+  }
 };

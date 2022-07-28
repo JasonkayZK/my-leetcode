@@ -6,29 +6,27 @@
 #include "data_structure/union_find.h"
 
 class Solution {
-public:
+ public:
 
-    int numWaterBottles(int numBottles, int numExchange) {
-        int res = numBottles;
+  int numWaterBottles(int numBottles, int numExchange) {
+    int res = numBottles;
 
-        while (true) {
-            int div = numBottles / numExchange;
-            if (div <= 0) break;
+    while (true) {
+      int div = numBottles / numExchange;
+      if (div <= 0) break;
 
-            res += div;
-            numBottles = numBottles % numExchange + div;
-        }
-
-        return res;
+      res += div;
+      numBottles = numBottles % numExchange + div;
     }
 
-private:
+    return res;
+  }
 
+ private:
 
 };
 
 int main() {
 
-
-    return 0;
+  return 0;
 }

@@ -15,20 +15,20 @@ using namespace std;
 
 // Definition for a Node.
 class Node {
-public:
-    int val;
-    vector<Node *> children;
+ public:
+  int val;
+  vector<Node *> children;
 
-    Node() {}
+  Node() {}
 
-    Node(int _val) {
-        val = _val;
-    }
+  Node(int _val) {
+    val = _val;
+  }
 
-    Node(int _val, vector<Node *> _children) {
-        val = _val;
-        children = _children;
-    }
+  Node(int _val, vector<Node *> _children) {
+    val = _val;
+    children = _children;
+  }
 };
 
 /* Solution 1: Recursive
@@ -61,32 +61,32 @@ public:
 
 /* Solution 2: Stack */
 class Solution {
-private:
+ private:
 
-public:
-    vector<int> postorder(Node *root) {
-        vector<int> res = {};
+ public:
+  vector<int> postorder(Node *root) {
+    vector<int> res = {};
 
-        if (root == nullptr) return {};
+    if (root == nullptr) return {};
 
-        stack<Node *> stk{};
-        stk.push(root);
+    stack<Node *> stk{};
+    stk.push(root);
 
-        while (!stk.empty()) {
-            auto node = stk.top();
-            stk.pop();
+    while (!stk.empty()) {
+      auto node = stk.top();
+      stk.pop();
 
-            res.push_back(node->val);
-            vector<Node *> chs = node->children;
-            if (!chs.empty()) {
-                for (int i = 0, size = chs.size(); i < size; i++) {
-                    auto n = chs[i];
-                    if (n) stk.push(n);
-                }
-            }
+      res.push_back(node->val);
+      vector<Node *> chs = node->children;
+      if (!chs.empty()) {
+        for (int i = 0, size = chs.size(); i < size; i++) {
+          auto n = chs[i];
+          if (n) stk.push(n);
         }
-        reverse(res.begin(), res.end());
-
-        return res;
+      }
     }
+    reverse(res.begin(), res.end());
+
+    return res;
+  }
 };

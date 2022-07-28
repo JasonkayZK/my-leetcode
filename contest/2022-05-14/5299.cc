@@ -6,39 +6,39 @@
 #include "data_structure/union_find.h"
 
 class Solution {
-public:
+ public:
 
-    int divisorSubstrings(int num, int k) {
-        string s = to_string(num);
+  int divisorSubstrings(int num, int k) {
+    string s = to_string(num);
 
-        if (k > s.size()) {
-            return 0;
-        }
-
-        int ans = 0;
-        for (int i = 0; i < s.size() - k + 1; ++i) {
-            if (isDivisor(s, num, i, i + k - 1)) {
-                ans++;
-            }
-        }
-        return ans;
+    if (k > s.size()) {
+      return 0;
     }
 
-private:
-
-    bool isDivisor(const string &str, int num, int l, int r) {
-        int cur = 0;
-        for (int i = l; i <= r; ++i) {
-            cur = cur * 10 + str[i] - '0';
-        }
-        return cur != 0 && num % cur == 0;
+    int ans = 0;
+    for (int i = 0; i < s.size() - k + 1; ++i) {
+      if (isDivisor(s, num, i, i + k - 1)) {
+        ans++;
+      }
     }
+    return ans;
+  }
+
+ private:
+
+  bool isDivisor(const string &str, int num, int l, int r) {
+    int cur = 0;
+    for (int i = l; i <= r; ++i) {
+      cur = cur * 10 + str[i] - '0';
+    }
+    return cur != 0 && num % cur == 0;
+  }
 
 };
 
 int main() {
 
-    Solution().divisorSubstrings(240, 2);
+  Solution().divisorSubstrings(240, 2);
 
-    return 0;
+  return 0;
 }

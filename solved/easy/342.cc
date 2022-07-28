@@ -6,19 +6,17 @@
 #include "data_structure/union_find.h"
 
 class Solution {
-public:
+ public:
 
-    bool isPowerOfFour(int n) {
-        return n > 0 && (n & (n - 1)) == 0 && (n & 0xaaaaaaaa) == 0;
-    }
+  bool isPowerOfFour(int n) {
+    return n > 0 && (n & (n - 1)) == 0 && (n & 0xaaaaaaaa) == 0;
+  }
 
-private:
-
+ private:
 
 };
 
 int main() {
 
-
-    return 0;
+  return 0;
 }

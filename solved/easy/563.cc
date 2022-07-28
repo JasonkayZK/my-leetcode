@@ -6,32 +6,31 @@
 #include "data_structure/union_find.h"
 
 class Solution {
-public:
+ public:
 
-    int findTilt(TreeNode *root) {
-        res = 0;
-        count_node(root);
-        return res;
-    }
+  int findTilt(TreeNode *root) {
+    res = 0;
+    count_node(root);
+    return res;
+  }
 
-private:
+ private:
 
-    int count_node(TreeNode *root) {
-        if (root == nullptr) return 0;
+  int count_node(TreeNode *root) {
+    if (root == nullptr) return 0;
 
-        int left = count_node(root->left);
-        int right = count_node(root->right);
+    int left = count_node(root->left);
+    int right = count_node(root->right);
 
-        res += abs(right - left);
+    res += abs(right - left);
 
-        return left + right + root->val;
-    }
+    return left + right + root->val;
+  }
 
-    int res;
+  int res;
 };
 
 int main() {
 
-
-    return 0;
+  return 0;
 }

@@ -6,19 +6,17 @@
 #include "data_structure/union_find.h"
 
 class Solution {
-public:
+ public:
 
-    int addDigits(int num) {
-        return (num - 1) % 9 + 1;
-    }
+  int addDigits(int num) {
+    return (num - 1) % 9 + 1;
+  }
 
-private:
-
+ private:
 
 };
 
 int main() {
 
-
-    return 0;
+  return 0;
 }

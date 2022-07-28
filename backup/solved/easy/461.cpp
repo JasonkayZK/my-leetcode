@@ -7,7 +7,7 @@
 using namespace std;
 
 class Solution {
-public:
+ public:
 /* Solution 1: default
     int hammingDistance(int x, int y) {
         int c = x^y;
@@ -32,15 +32,15 @@ public:
 */
 
 /* Solution 3: 分治 */
-    int hammingDistance(int x, int y) {
-        int c;
-        c = x ^ y;
-        c = (c & 0x55555555) + ((c >> 1) & 0x55555555);
-        c = (c & 0x33333333) + ((c >> 2) & 0x33333333);
-        c = (c & 0x0f0f0f0f) + ((c >> 4) & 0x0f0f0f0f);
-        c = (c & 0x00ff00ff) + ((c >> 8) & 0x00ff00ff);
-        c = (c & 0x0000ffff) + ((c >> 16) & 0x0000ffff);
-        return c;
-    }
+  int hammingDistance(int x, int y) {
+    int c;
+    c = x ^ y;
+    c = (c & 0x55555555) + ((c >> 1) & 0x55555555);
+    c = (c & 0x33333333) + ((c >> 2) & 0x33333333);
+    c = (c & 0x0f0f0f0f) + ((c >> 4) & 0x0f0f0f0f);
+    c = (c & 0x00ff00ff) + ((c >> 8) & 0x00ff00ff);
+    c = (c & 0x0000ffff) + ((c >> 16) & 0x0000ffff);
+    return c;
+  }
 
 };

@@ -6,20 +6,18 @@
 #include "data_structure/union_find.h"
 
 class Solution {
-public:
+ public:
 
-    int sumNums(int n) {
-        if (n == 1) return 1;
-        return n + sumNums(n - 1);
-    }
+  int sumNums(int n) {
+    if (n == 1) return 1;
+    return n + sumNums(n - 1);
+  }
 
-private:
-
+ private:
 
 };
 
 int main() {
 
-
-    return 0;
+  return 0;
 }

@@ -5,22 +5,22 @@
 #include "data_structure/segment_tree.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    int findKthLargest(vector<int> &nums, int k) {
-        priority_queue<int, vector<int>, less<>> maxHeap;
-        for (int x: nums)
-            maxHeap.push(x);
-        for (int _ = 0; _ < k - 1; _++)
-            maxHeap.pop();
-        return maxHeap.top();
-    }
+  int findKthLargest(vector<int> &nums, int k) {
+    priority_queue<int, vector<int>, less<>> maxHeap;
+    for (int x : nums)
+      maxHeap.push(x);
+    for (int _ = 0; _ < k - 1; _++)
+      maxHeap.pop();
+    return maxHeap.top();
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

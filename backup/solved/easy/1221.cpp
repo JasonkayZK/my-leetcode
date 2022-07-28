@@ -19,14 +19,14 @@ using LL = long long;
 using PIC = pair<int, char>;
 
 class Solution {
-public:
-    int balancedStringSplit(string s) {
-        int res = 0, curCnt = 0;
-        for (char i : s) {
-            if ('R' == i) curCnt++;
-            else curCnt--;
-            if (curCnt == 0) res++;
-        }
-        return res;
+ public:
+  int balancedStringSplit(string s) {
+    int res = 0, curCnt = 0;
+    for (char i : s) {
+      if ('R' == i) curCnt++;
+      else curCnt--;
+      if (curCnt == 0) res++;
     }
+    return res;
+  }
 };

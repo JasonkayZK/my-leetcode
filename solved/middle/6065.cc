@@ -6,29 +6,27 @@
 #include "data_structure/union_find.h"
 
 class Solution {
-public:
+ public:
 
-    int largestCombination(vector<int>& candidates) {
-        int res = 0;
-        for (int i = 0; i < 32; ++i) {
-            int cur = 0;
-            for (const auto &item: candidates) {
-                if (((item >> i) & 1) == 1) {
-                    cur++;
-                }
-            }
-            res = max(res, cur);
+  int largestCombination(vector<int> &candidates) {
+    int res = 0;
+    for (int i = 0; i < 32; ++i) {
+      int cur = 0;
+      for (const auto &item : candidates) {
+        if (((item >> i) & 1) == 1) {
+          cur++;
         }
-        return res;
+      }
+      res = max(res, cur);
     }
+    return res;
+  }
 
-private:
-
+ private:
 
 };
 
 int main() {
 
-
-    return 0;
+  return 0;
 }

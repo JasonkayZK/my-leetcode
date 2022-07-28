@@ -5,76 +5,74 @@
 #include "data_structure/segment_tree.h"
 
 class NestedInteger {
-public:
-    // Constructor initializes an empty nested list.
-    NestedInteger();
+ public:
+  // Constructor initializes an empty nested list.
+  NestedInteger();
 
-    // Constructor initializes a single integer.
-    NestedInteger(int value);
+  // Constructor initializes a single integer.
+  NestedInteger(int value);
 
-    // Return true if this NestedInteger holds a single integer, rather than a nested list.
-    bool isInteger() const;
+  // Return true if this NestedInteger holds a single integer, rather than a nested list.
+  bool isInteger() const;
 
-    // Return the single integer that this NestedInteger holds, if it holds a single integer
-    // The result is undefined if this NestedInteger holds a nested list
-    int getInteger() const;
+  // Return the single integer that this NestedInteger holds, if it holds a single integer
+  // The result is undefined if this NestedInteger holds a nested list
+  int getInteger() const;
 
-    // Set this NestedInteger to hold a single integer.
-    void setInteger(int value);
+  // Set this NestedInteger to hold a single integer.
+  void setInteger(int value);
 
-    // Set this NestedInteger to hold a nested list and adds a nested integer to it.
-    void add(const NestedInteger &ni);
+  // Set this NestedInteger to hold a nested list and adds a nested integer to it.
+  void add(const NestedInteger &ni);
 
-    // Return the nested list that this NestedInteger holds, if it holds a nested list
-    // The result is undefined if this NestedInteger holds a single integer
-    const vector<NestedInteger> &getList() const;
+  // Return the nested list that this NestedInteger holds, if it holds a nested list
+  // The result is undefined if this NestedInteger holds a single integer
+  const vector<NestedInteger> &getList() const;
 };
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    NestedInteger deserialize(string s) {
-        if (s[0] != '[') return NestedInteger(stoi(s));
+  NestedInteger deserialize(string s) {
+    if (s[0] != '[') return NestedInteger(stoi(s));
 
-        stack<NestedInteger> st;
-        int num = 0;
-        bool negative = false;
+    stack<NestedInteger> st;
+    int num = 0;
+    bool negative = false;
 
-        for (int i = 0; i < s.size(); ++i) {
-            char c = s[i];
+    for (int i = 0; i < s.size(); ++i) {
+      char c = s[i];
 
-            if (c == '-') {
-                negative = true;
-            } else if (isdigit(c)) {
-                num = num * 10 + c - '0';
-            } else if (c == '[') {
-                st.emplace(NestedInteger());
-            } else if (c == ',' || c == ']') {
-                if (isdigit(s[i - 1])) {
-                    if (negative) {
-                        num *= -1;
-                    }
-                    st.top().add(NestedInteger(num));
-                }
-                num = 0;
-                negative = false;
-                if (c == ']' && st.size() > 1) {
-                    NestedInteger ni = st.top();
-                    st.pop();
-                    st.top().add(ni);
-                }
-            }
+      if (c == '-') {
+        negative = true;
+      } else if (isdigit(c)) {
+        num = num * 10 + c - '0';
+      } else if (c == '[') {
+        st.emplace(NestedInteger());
+      } else if (c == ',' || c == ']') {
+        if (isdigit(s[i - 1])) {
+          if (negative) {
+            num *= -1;
+          }
+          st.top().add(NestedInteger(num));
         }
-        return st.top();
+        num = 0;
+        negative = false;
+        if (c == ']' && st.size() > 1) {
+          NestedInteger ni = st.top();
+          st.pop();
+          st.top().add(ni);
+        }
+      }
     }
+    return st.top();
+  }
 
 };
 
-
 int main() {
 
-
-    return 0;
+  return 0;
 }

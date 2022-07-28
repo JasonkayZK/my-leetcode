@@ -6,28 +6,26 @@
 #include "data_structure/union_find.h"
 
 class Solution {
-public:
+ public:
 
-    string destCity(vector<vector<string>> &paths) {
-        unordered_map<string, int> m;
-        for (const auto &item: paths) {
-            ++m[item[0]];
-            if (m.count(item[1]) <= 0) m.emplace(make_pair(item[1], 0));
-        }
-
-        for (const auto &[k, v]: m) {
-            if (v == 0) return k;
-        }
-        return "";
+  string destCity(vector<vector<string>> &paths) {
+    unordered_map<string, int> m;
+    for (const auto &item : paths) {
+      ++m[item[0]];
+      if (m.count(item[1]) <= 0) m.emplace(make_pair(item[1], 0));
     }
 
-private:
+    for (const auto &[k, v] : m) {
+      if (v == 0) return k;
+    }
+    return "";
+  }
 
+ private:
 
 };
 
 int main() {
 
-
-    return 0;
+  return 0;
 }

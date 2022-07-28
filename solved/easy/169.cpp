@@ -4,33 +4,33 @@
 #include "data_structure/trie.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    int majorityElement(vector<int>& nums) {
-        int n = int(nums.size());
-        if (n == 0) return 0;
+  int majorityElement(vector<int> &nums) {
+    int n = int(nums.size());
+    if (n == 0) return 0;
 
-        int cnt = 1, res = nums[0];
-        for (int i = 1; i < n; ++i) {
-            if (nums[i] != res) {
-                cnt--;
-                if (cnt <= 0) {
-                    res = nums[i];
-                    cnt=1;
-                }
-            } else {
-                cnt++;
-            }
+    int cnt = 1, res = nums[0];
+    for (int i = 1; i < n; ++i) {
+      if (nums[i] != res) {
+        cnt--;
+        if (cnt <= 0) {
+          res = nums[i];
+          cnt = 1;
         }
-
-        return res;
+      } else {
+        cnt++;
+      }
     }
+
+    return res;
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

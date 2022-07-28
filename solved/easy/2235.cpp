@@ -5,17 +5,17 @@
 #include "data_structure/segment_tree.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    int sum(int num1, int num2) {
-        return num1 + num2;
-    }
+  int sum(int num1, int num2) {
+    return num1 + num2;
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

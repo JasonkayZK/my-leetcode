@@ -6,20 +6,18 @@
 #include "data_structure/union_find.h"
 
 class Solution {
-public:
+ public:
 
-    int missingNumber(vector<int> &nums) {
-        int n = int(nums.size());
-        return (0 + n) * (n + 1) / 2 - accumulate(nums.begin(), nums.end(), 0);
-    }
+  int missingNumber(vector<int> &nums) {
+    int n = int(nums.size());
+    return (0 + n) * (n + 1) / 2 - accumulate(nums.begin(), nums.end(), 0);
+  }
 
-private:
-
+ private:
 
 };
 
 int main() {
 
-
-    return 0;
+  return 0;
 }

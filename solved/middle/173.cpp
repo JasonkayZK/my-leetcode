@@ -6,39 +6,37 @@
 #include "data_structure/union_find.h"
 
 class Solution {
-private:
+ private:
 
-public:
-
+ public:
 
 };
 
 class BSTIterator {
-private:
-    TreeNode *cur;
-    stack<TreeNode *> stk;
-public:
-    explicit BSTIterator(TreeNode *root) : cur(root) {};
+ private:
+  TreeNode *cur;
+  stack<TreeNode *> stk;
+ public:
+  explicit BSTIterator(TreeNode *root) : cur(root) {};
 
-    int next() {
-        while (cur != nullptr) {
-            stk.push(cur);
-            cur = cur->left;
-        }
-        cur = stk.top();
-        stk.pop();
-        int ret = cur->val;
-        cur = cur->right;
-        return ret;
+  int next() {
+    while (cur != nullptr) {
+      stk.push(cur);
+      cur = cur->left;
     }
+    cur = stk.top();
+    stk.pop();
+    int ret = cur->val;
+    cur = cur->right;
+    return ret;
+  }
 
-    bool hasNext() {
-        return cur != nullptr || !stk.empty();
-    }
+  bool hasNext() {
+    return cur != nullptr || !stk.empty();
+  }
 };
 
 int main() {
 
-
-    return 0;
+  return 0;
 }

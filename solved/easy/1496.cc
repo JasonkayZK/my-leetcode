@@ -6,36 +6,36 @@
 #include "data_structure/union_find.h"
 
 class Solution {
-public:
+ public:
 
-    bool isPathCrossing(string path) {
-        unordered_set<int> s;
+  bool isPathCrossing(string path) {
+    unordered_set<int> s;
 
-        int x = 0, y = 0;
-        s.emplace(0);
-        for (const auto &item: path) {
-            if (item == 'N') --y;
-            else if (item == 'S') ++y;
-            else if (item == 'W') --x;
-            else ++x;
-            int hash = my_hash(x, y);
-            if (s.count(hash) > 0) return true;
-            else s.emplace(hash);
-        }
-        return false;
+    int x = 0, y = 0;
+    s.emplace(0);
+    for (const auto &item : path) {
+      if (item == 'N') --y;
+      else if (item == 'S') ++y;
+      else if (item == 'W') --x;
+      else ++x;
+      int hash = my_hash(x, y);
+      if (s.count(hash) > 0) return true;
+      else s.emplace(hash);
     }
+    return false;
+  }
 
-private:
+ private:
 
-    int my_hash(int x, int y) {
-        return x * 100000 + y;
-    }
+  int my_hash(int x, int y) {
+    return x * 100000 + y;
+  }
 
 };
 
 int main() {
 
-    Solution().isPathCrossing("NES");
+  Solution().isPathCrossing("NES");
 
-    return 0;
+  return 0;
 }

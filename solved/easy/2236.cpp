@@ -5,17 +5,17 @@
 #include "data_structure/segment_tree.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    bool checkTree(TreeNode* root) {
-        return root->val == root->left->val + root->right->val;
-    }
+  bool checkTree(TreeNode *root) {
+    return root->val == root->left->val + root->right->val;
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

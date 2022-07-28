@@ -6,32 +6,31 @@
 #include "data_structure/union_find.h"
 
 class Solution {
-public:
+ public:
 
-    int numSubarrayProductLessThanK(vector<int> &nums, int k) {
-        int n = int(nums.size());
-        if (n <= 0) return 0;
+  int numSubarrayProductLessThanK(vector<int> &nums, int k) {
+    int n = int(nums.size());
+    if (n <= 0) return 0;
 
-        int cur_mul = 1, res = 0;
-        int l = 0, r = 0;
-        while (r < n) {
-            cur_mul *= nums[r];
-            while (l <= r && cur_mul >= k) {
-                cur_mul /= nums[l];
-                ++l;
-            }
-            res += r - l + 1;
-            ++r;
-        }
-        return res;
+    int cur_mul = 1, res = 0;
+    int l = 0, r = 0;
+    while (r < n) {
+      cur_mul *= nums[r];
+      while (l <= r && cur_mul >= k) {
+        cur_mul /= nums[l];
+        ++l;
+      }
+      res += r - l + 1;
+      ++r;
     }
+    return res;
+  }
 
-private:
+ private:
 
 };
 
 int main() {
 
-
-    return 0;
+  return 0;
 }

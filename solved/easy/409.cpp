@@ -5,27 +5,27 @@
 #include "data_structure/segment_tree.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    int longestPalindrome(string s) {
-        unordered_map<char, int> count;
-        int ans = 0;
-        for (char c : s)
-            ++count[c];
-        for (auto p : count) {
-            int v = p.second;
-            ans += v / 2 * 2;
-            if (v % 2 == 1 and ans % 2 == 0)
-                ++ans;
-        }
-        return ans;
+  int longestPalindrome(string s) {
+    unordered_map<char, int> count;
+    int ans = 0;
+    for (char c : s)
+      ++count[c];
+    for (auto p : count) {
+      int v = p.second;
+      ans += v / 2 * 2;
+      if (v % 2 == 1 and ans % 2 == 0)
+        ++ans;
     }
+    return ans;
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

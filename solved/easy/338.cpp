@@ -40,24 +40,23 @@ public:
 
 /* Method 2: DP */
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    vector<int> countBits(int n) {
-        vector<int> res(n + 1);
-        for (int i = 0; i <= n; ++i) {
-            res[i] = res[i >> 1] + (i & 1);
-        }
-        return res;
+  vector<int> countBits(int n) {
+    vector<int> res(n + 1);
+    for (int i = 0; i <= n; ++i) {
+      res[i] = res[i >> 1] + (i & 1);
     }
+    return res;
+  }
 
 };
 
-
 int main() {
 
-    Solution().countBits(5);
+  Solution().countBits(5);
 
-    return 0;
+  return 0;
 }

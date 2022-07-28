@@ -14,30 +14,30 @@
 using namespace std;
 
 class Solution {
-private:
+ private:
 
-    vector<vector<int>> res;
-    vector<int> stack;
+  vector<vector<int>> res;
+  vector<int> stack;
 
-public:
+ public:
 
-    void dfs(vector<vector<int>>& graph, int node, int aimNode) {
-        if (node == aimNode){
-            res.push_back(stack);
-            return;
-        }
-
-        for (auto &y : graph[node]) {
-            stack.push_back(y);
-            dfs(graph, y, aimNode);
-            stack.pop_back();
-        }
-
+  void dfs(vector<vector<int>> &graph, int node, int aimNode) {
+    if (node == aimNode) {
+      res.push_back(stack);
+      return;
     }
 
-    vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
-        stack.push_back(0);
-        dfs(graph, 0, int(graph.size()) - 1);
-        return res;
+    for (auto &y : graph[node]) {
+      stack.push_back(y);
+      dfs(graph, y, aimNode);
+      stack.pop_back();
     }
+
+  }
+
+  vector<vector<int>> allPathsSourceTarget(vector<vector<int>> &graph) {
+    stack.push_back(0);
+    dfs(graph, 0, int(graph.size()) - 1);
+    return res;
+  }
 };

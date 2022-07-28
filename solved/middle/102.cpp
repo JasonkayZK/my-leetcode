@@ -4,39 +4,39 @@
 #include "data_structure/trie.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    vector<vector<int>> levelOrder(TreeNode *root) {
-        if (root == nullptr) return {};
+  vector<vector<int>> levelOrder(TreeNode *root) {
+    if (root == nullptr) return {};
 
-        queue<TreeNode *> q{};
-        q.push(root);
-        vector<vector<int>> res;
+    queue < TreeNode * > q{};
+    q.push(root);
+    vector<vector<int>> res;
 
-        while (!q.empty()) {
-            int n = int(q.size());
-            auto cur_level = vector<int>();
+    while (!q.empty()) {
+      int n = int(q.size());
+      auto cur_level = vector<int>();
 
-            for (int i = 0; i < n; ++i) {
-                TreeNode *cur = q.front();
-                q.pop();
+      for (int i = 0; i < n; ++i) {
+        TreeNode *cur = q.front();
+        q.pop();
 
-                cur_level.push_back(cur->val);
-                if (cur->left != nullptr) q.push(cur->left);
-                if (cur->right != nullptr) q.push(cur->right);
-            }
+        cur_level.push_back(cur->val);
+        if (cur->left != nullptr) q.push(cur->left);
+        if (cur->right != nullptr) q.push(cur->right);
+      }
 
-            res.push_back(cur_level);
-        }
-
-        return res;
+      res.push_back(cur_level);
     }
+
+    return res;
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

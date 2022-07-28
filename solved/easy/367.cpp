@@ -5,18 +5,18 @@
 #include "data_structure/segment_tree.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    bool isPerfectSquare(int num) {
-        int res = int(sqrt(num));
-        return res*res == num;
-    }
+  bool isPerfectSquare(int num) {
+    int res = int(sqrt(num));
+    return res * res == num;
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

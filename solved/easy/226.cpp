@@ -4,24 +4,24 @@
 #include "data_structure/trie.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    TreeNode* invertTree(TreeNode* root) {
-        if (root == nullptr) return root;
+  TreeNode *invertTree(TreeNode *root) {
+    if (root == nullptr) return root;
 
-        TreeNode* left = invertTree(root->left);
-        TreeNode* right = invertTree(root->right);
-        root->left = right;
-        root->right = left;
+    TreeNode *left = invertTree(root->left);
+    TreeNode *right = invertTree(root->right);
+    root->left = right;
+    root->right = left;
 
-        return root;
-    }
+    return root;
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

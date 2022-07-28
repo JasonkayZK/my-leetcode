@@ -4,34 +4,33 @@
 #include "data_structure/trie.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    vector<int> preorderTraversal(TreeNode* root) {
-        vector<int> res;
-        if (root == nullptr) return res;
+  vector<int> preorderTraversal(TreeNode *root) {
+    vector<int> res;
+    if (root == nullptr) return res;
 
-        stack<TreeNode*> stk;
-        while (root != nullptr || !stk.empty()) {
-            while (root != nullptr) {
-                stk.push(root);
-                res.emplace_back(root->val);
-                root = root->left;
-            }
+    stack < TreeNode * > stk;
+    while (root != nullptr || !stk.empty()) {
+      while (root != nullptr) {
+        stk.push(root);
+        res.emplace_back(root->val);
+        root = root->left;
+      }
 
-            root = stk.top();
-            stk.pop();
-            root = root->right;
-        }
-
-        return res;
+      root = stk.top();
+      stk.pop();
+      root = root->right;
     }
+
+    return res;
+  }
 
 };
 
 int main() {
 
-
-    return 0;
+  return 0;
 }

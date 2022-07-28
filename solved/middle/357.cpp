@@ -5,25 +5,25 @@
 #include "data_structure/segment_tree.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    int countNumbersWithUniqueDigits(int n) {
-        if (n == 0) return 1;
-        else if (n == 1) return 10;
+  int countNumbersWithUniqueDigits(int n) {
+    if (n == 0) return 1;
+    else if (n == 1) return 10;
 
-        int res = 10, cur = 9;
-        for (int i = 0; i < n - 1; ++i) {
-            cur *= 9-i;
-            res += cur;
-        }
-        return res;
+    int res = 10, cur = 9;
+    for (int i = 0; i < n - 1; ++i) {
+      cur *= 9 - i;
+      res += cur;
     }
+    return res;
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

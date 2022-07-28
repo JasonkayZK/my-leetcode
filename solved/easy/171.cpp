@@ -6,22 +6,22 @@
 #include "data_structure/union_find.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    int titleToNumber(string columnTitle) {
-        long long res = 0;
-        for (const auto &item: columnTitle) {
-            res = res * 26 + item - 'A' + 1;
-        }
-        return res;
+  int titleToNumber(string columnTitle) {
+    long long res = 0;
+    for (const auto &item : columnTitle) {
+      res = res * 26 + item - 'A' + 1;
     }
+    return res;
+  }
 
 };
 
 int main() {
-    "FXSHRXW"
+  "FXSHRXW"
 
-    return 0;
+  return 0;
 }

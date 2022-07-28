@@ -5,31 +5,31 @@
 #include "data_structure/segment_tree.h"
 
 class Solution {
-private:
+ private:
 
-    int ans;
+  int ans;
 
-    int depth(TreeNode *root) {
-        if (root == nullptr) return 0;
+  int depth(TreeNode *root) {
+    if (root == nullptr) return 0;
 
-        int L = depth(root->left);
-        int R = depth(root->right);
-        ans = max(ans, L + R + 1);
-        return max(L, R) + 1;
-    }
+    int L = depth(root->left);
+    int R = depth(root->right);
+    ans = max(ans, L + R + 1);
+    return max(L, R) + 1;
+  }
 
-public:
+ public:
 
-    int diameterOfBinaryTree(TreeNode *root) {
-        if (root == nullptr) return 0;
-        ans = 0;
-        depth(root);
-        return ans - 1;
-    }
+  int diameterOfBinaryTree(TreeNode *root) {
+    if (root == nullptr) return 0;
+    ans = 0;
+    depth(root);
+    return ans - 1;
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

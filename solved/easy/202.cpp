@@ -5,33 +5,33 @@
 #include "data_structure/segment_tree.h"
 
 class Solution {
-private:
-    int nextNum(int n) {
-        int sum = 0;
-        while (n > 0) {
-            int cur = n % 10;
-            sum += cur * cur;
-            n /= 10;
-        }
-        return sum;
+ private:
+  int nextNum(int n) {
+    int sum = 0;
+    while (n > 0) {
+      int cur = n % 10;
+      sum += cur * cur;
+      n /= 10;
+    }
+    return sum;
+  }
+
+ public:
+
+  bool isHappy(int n) {
+    unordered_set<int> s;
+    while (s.count(n) == 0) {
+      if (n == 1) return true;
+      s.emplace(n);
+      n = nextNum(n);
     }
 
-public:
-
-    bool isHappy(int n) {
-        unordered_set<int> s;
-        while (s.count(n) == 0) {
-            if (n == 1) return true;
-            s.emplace(n);
-            n = nextNum(n);
-        }
-
-        return false;
-    }
+    return false;
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

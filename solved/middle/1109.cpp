@@ -5,36 +5,36 @@
 #include "data_structure/segment_tree.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    vector<int> corpFlightBookings(vector<vector<int>> &bookings, int n) {
-        vector<int> res(n + 1);
+  vector<int> corpFlightBookings(vector<vector<int>> &bookings, int n) {
+    vector<int> res(n + 1);
 
-        for (const auto &item: bookings) { // build diff array
-            res[item[0] - 1] += item[2];
-            res[item[1]] -= item[2];
-        }
-
-        // build sum array
-        int sum = 0;
-        for (int i = 0; i < n; ++i) {
-            sum += res[i];
-            res[i] = sum;
-        }
-
-        res.erase(res.end() - 1);
-        return res;
+    for (const auto &item : bookings) { // build diff array
+      res[item[0] - 1] += item[2];
+      res[item[1]] -= item[2];
     }
+
+    // build sum array
+    int sum = 0;
+    for (int i = 0; i < n; ++i) {
+      sum += res[i];
+      res[i] = sum;
+    }
+
+    res.erase(res.end() - 1);
+    return res;
+  }
 
 };
 
 int main() {
 
-    vector<vector<int>> l = {{1, 2, 10},
-                             {2, 2, 15}};
-    Solution().corpFlightBookings(l, 2);
+  vector<vector<int>> l = {{1, 2, 10},
+                           {2, 2, 15}};
+  Solution().corpFlightBookings(l, 2);
 
-    return 0;
+  return 0;
 }

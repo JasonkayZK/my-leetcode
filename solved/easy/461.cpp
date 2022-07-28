@@ -5,17 +5,17 @@
 #include "data_structure/segment_tree.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    int hammingDistance(int x, int y) {
-        return __builtin_popcount(x ^ y);
-    }
+  int hammingDistance(int x, int y) {
+    return __builtin_popcount(x ^ y);
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

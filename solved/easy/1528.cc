@@ -6,35 +6,33 @@
 #include "data_structure/union_find.h"
 
 class Solution {
-public:
+ public:
 
-    string restoreString(string s, vector<int>& indices) {
-        int n = int(s.size());
-        if (n <= 1) return s;
+  string restoreString(string s, vector<int> &indices) {
+    int n = int(s.size());
+    if (n <= 1) return s;
 
-        for (int i = 0; i < n; ++i) {
-            if (indices[i] != i) {
-                char c = s[i];
-                int idx = indices[i];
+    for (int i = 0; i < n; ++i) {
+      if (indices[i] != i) {
+        char c = s[i];
+        int idx = indices[i];
 
-                while (idx != i) {
-                    swap(s[idx], c);
-                    swap(indices[idx], idx);
-                }
-                s[i] = c;
-                indices[i] = i;
-            }
+        while (idx != i) {
+          swap(s[idx], c);
+          swap(indices[idx], idx);
         }
-        return s;
+        s[i] = c;
+        indices[i] = i;
+      }
     }
+    return s;
+  }
 
-private:
-
+ private:
 
 };
 
 int main() {
 
-
-    return 0;
+  return 0;
 }

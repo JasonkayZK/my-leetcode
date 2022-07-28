@@ -5,33 +5,33 @@
 #include "data_structure/segment_tree.h"
 
 class Solution {
-private:
+ private:
 
-    void dfs_helper(vector<int> &res, int cur, int max) {
-        if (cur > max) return;
+  void dfs_helper(vector<int> &res, int cur, int max) {
+    if (cur > max) return;
 
-        res.push_back(cur);
-        for (int i = 0; i < 10; ++i) {
-            dfs_helper(res, cur*10+i, max);
-        }
+    res.push_back(cur);
+    for (int i = 0; i < 10; ++i) {
+      dfs_helper(res, cur * 10 + i, max);
+    }
+  }
+
+ public:
+
+  vector<int> lexicalOrder(int n) {
+    if (n <= 0) return {};
+
+    vector<int> res;
+    for (int i = 1; i < 10; ++i) {
+      dfs_helper(res, i, n);
     }
 
-public:
-
-    vector<int> lexicalOrder(int n) {
-        if (n <= 0) return {};
-
-        vector<int> res;
-        for (int i = 1; i < 10; ++i) {
-            dfs_helper(res, i, n);
-        }
-
-        return res;
-    }
+    return res;
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

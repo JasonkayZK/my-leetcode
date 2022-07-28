@@ -37,17 +37,17 @@ public:
 
 /* Method 2: Math */
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    int subsetXORSum(vector<int> &nums) {
-        return (std::accumulate(nums.begin(), nums.end(), 0, bit_or()) << (nums.size() - 1));
-    }
+  int subsetXORSum(vector<int> &nums) {
+    return (std::accumulate(nums.begin(), nums.end(), 0, bit_or()) << (nums.size() - 1));
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

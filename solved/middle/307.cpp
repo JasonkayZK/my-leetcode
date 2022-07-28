@@ -5,27 +5,27 @@
 #include "data_structure/segment_tree.h"
 
 class NumArray {
-private:
-    SegmentTree tree;
-    int size;
+ private:
+  SegmentTree tree;
+  int size;
 
-public:
-    explicit NumArray(const vector<int> &nums) {
-        size = int(nums.size());
-        this->tree = SegmentTree(size * 4);
-        this->tree.build(0, 0, size - 1, nums);
-    }
+ public:
+  explicit NumArray(const vector<int> &nums) {
+    size = int(nums.size());
+    this->tree = SegmentTree(size * 4);
+    this->tree.build(0, 0, size - 1, nums);
+  }
 
-    void update(int index, int val) {
-        tree.change(index, val, 0, 0, size - 1);
-    }
+  void update(int index, int val) {
+    tree.change(index, val, 0, 0, size - 1);
+  }
 
-    int sumRange(int left, int right) {
-        return tree.range(left, right, 0, 0, size - 1);
-    }
+  int sumRange(int left, int right) {
+    return tree.range(left, right, 0, 0, size - 1);
+  }
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

@@ -5,33 +5,33 @@
 #include "data_structure/segment_tree.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    vector<int> partitionLabels(string s) {
-        int n = s.size();
-        if (n <= 0) return {};
+  vector<int> partitionLabels(string s) {
+    int n = s.size();
+    if (n <= 0) return {};
 
-        int last[26];
-        for (int i = 0; i < n; ++i) {
-            last[s[i] - 'a'] = i;
-        }
-
-        vector<int> res;
-        int l = 0, r = 0;
-        for (int i = 0; i < n; ++i) {
-            r = max(r, last[s[i] - 'a']);
-            if (i == r) {
-                res.push_back(r - l + 1);
-                l = r + 1;
-            }
-        }
-        return res;
+    int last[26];
+    for (int i = 0; i < n; ++i) {
+      last[s[i] - 'a'] = i;
     }
+
+    vector<int> res;
+    int l = 0, r = 0;
+    for (int i = 0; i < n; ++i) {
+      r = max(r, last[s[i] - 'a']);
+      if (i == r) {
+        res.push_back(r - l + 1);
+        l = r + 1;
+      }
+    }
+    return res;
+  }
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

@@ -41,30 +41,29 @@ public:
 
 /* Method 2: DFS */
 class Solution {
-private:
+ private:
 
-    vector<int> res;
+  vector<int> res;
 
-    void dfs_helper(TreeNode *root, int depth) {
-        if (root == nullptr) return;
+  void dfs_helper(TreeNode *root, int depth) {
+    if (root == nullptr) return;
 
-        if (depth == res.size()) {
-            res.push_back(root->val);
-        }
-        depth++;
-        dfs_helper(root->right, depth);
-        dfs_helper(root->left, depth);
+    if (depth == res.size()) {
+      res.push_back(root->val);
     }
+    depth++;
+    dfs_helper(root->right, depth);
+    dfs_helper(root->left, depth);
+  }
 
-public:
-    vector<int> rightSideView(TreeNode *root) {
-        dfs_helper(root, 0);
-        return res;
-    }
+ public:
+  vector<int> rightSideView(TreeNode *root) {
+    dfs_helper(root, 0);
+    return res;
+  }
 };
-
 
 int main() {
 
-    return 0;
+  return 0;
 }

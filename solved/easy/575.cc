@@ -6,23 +6,21 @@
 #include "data_structure/union_find.h"
 
 class Solution {
-public:
+ public:
 
-    int distributeCandies(vector<int> &candyType) {
-        int n = int(candyType.size());
-        if (n <= 1) return n;
+  int distributeCandies(vector<int> &candyType) {
+    int n = int(candyType.size());
+    if (n <= 1) return n;
 
-        unordered_set<int> s(candyType.begin(), candyType.end());
-        return min(n / 2, int(s.size()));
-    }
+    unordered_set<int> s(candyType.begin(), candyType.end());
+    return min(n / 2, int(s.size()));
+  }
 
-private:
-
+ private:
 
 };
 
 int main() {
 
-
-    return 0;
+  return 0;
 }

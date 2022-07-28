@@ -16,19 +16,19 @@
 using namespace std;
 
 class Solution {
-public:
-    const int TOP = 3;
+ public:
+  const int TOP = 3;
 
-    int thirdMax(vector<int> &nums) {
-        set<int> s;
-        for (int & num : nums) {
-            s.emplace(num);
-            if (s.size() > 3) {
-                s.erase(s.begin());
-            }
-        }
-        if (s.size() == 3)
-            return *s.begin();
-        return *s.rbegin();
+  int thirdMax(vector<int> &nums) {
+    set<int> s;
+    for (int &num : nums) {
+      s.emplace(num);
+      if (s.size() > 3) {
+        s.erase(s.begin());
+      }
     }
+    if (s.size() == 3)
+      return *s.begin();
+    return *s.rbegin();
+  }
 };

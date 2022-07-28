@@ -5,30 +5,30 @@
 #include "data_structure/segment_tree.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    char findTheDifference(string s, string t) {
-        vector<int> char_map(26, 0);
-        int n = s.size();
+  char findTheDifference(string s, string t) {
+    vector<int> char_map(26, 0);
+    int n = s.size();
 
-        for (int i = 0; i < n; ++i) {
-            char_map[s[i]-'a']--;
-            char_map[t[i]-'a']++;
-        }
-        char_map[t[n]-'a']++;
-
-        for (int i = 0; i < 26; ++i) {
-            if (char_map[i] > 0) return i + 'a';
-        }
-
-        return 0;
+    for (int i = 0; i < n; ++i) {
+      char_map[s[i] - 'a']--;
+      char_map[t[i] - 'a']++;
     }
+    char_map[t[n] - 'a']++;
+
+    for (int i = 0; i < 26; ++i) {
+      if (char_map[i] > 0) return i + 'a';
+    }
+
+    return 0;
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

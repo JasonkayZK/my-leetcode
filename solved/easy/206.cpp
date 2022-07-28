@@ -4,27 +4,25 @@
 #include "data_structure/trie.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    ListNode* reverseList(ListNode* head) {
-        ListNode* prev = nullptr;
-        ListNode* curr = head;
-        while (curr != nullptr) {
-            ListNode* next = curr->next;
-            curr->next = prev;
-            prev = curr;
-            curr = next;
-        }
-        return prev;
+  ListNode *reverseList(ListNode *head) {
+    ListNode *prev = nullptr;
+    ListNode *curr = head;
+    while (curr != nullptr) {
+      ListNode *next = curr->next;
+      curr->next = prev;
+      prev = curr;
+      curr = next;
     }
-
+    return prev;
+  }
 
 };
 
 int main() {
 
-
-    return 0;
+  return 0;
 }

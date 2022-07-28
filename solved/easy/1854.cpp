@@ -5,34 +5,34 @@
 #include "data_structure/segment_tree.h"
 
 class Solution {
-private:
-    static const int start_year = 1950;
+ private:
+  static const int start_year = 1950;
 
-public:
+ public:
 
-    int maximumPopulation(vector<vector<int>>& logs) {
-        vector<int> arr(101);
+  int maximumPopulation(vector<vector<int>> &logs) {
+    vector<int> arr(101);
 
-        for (const auto &item : logs) { // build diff array
-            arr[item[0]-start_year]++;
-            arr[item[1]-start_year]--;
-        }
-
-        int res = 0, sum = 0, maxSum = 0;
-        for (int i = 0; i < 101; ++i) {
-            sum += arr[i];
-            if (sum > maxSum) {
-                sum = maxSum;
-                res = i;
-            }
-        }
-
-        return res + start_year;
+    for (const auto &item : logs) { // build diff array
+      arr[item[0] - start_year]++;
+      arr[item[1] - start_year]--;
     }
+
+    int res = 0, sum = 0, maxSum = 0;
+    for (int i = 0; i < 101; ++i) {
+      sum += arr[i];
+      if (sum > maxSum) {
+        sum = maxSum;
+        res = i;
+      }
+    }
+
+    return res + start_year;
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

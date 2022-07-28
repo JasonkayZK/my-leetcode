@@ -5,21 +5,21 @@
 #include "data_structure/segment_tree.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    int maximumWealth(vector<vector<int>>& accounts) {
-        int res = 0;
-        for (const auto &item : accounts){
-            res = max(res, accumulate(item.begin(), item.end(), 0));
-        }
-        return res;
+  int maximumWealth(vector<vector<int>> &accounts) {
+    int res = 0;
+    for (const auto &item : accounts) {
+      res = max(res, accumulate(item.begin(), item.end(), 0));
     }
+    return res;
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

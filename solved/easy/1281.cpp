@@ -4,27 +4,26 @@
 #include "data_structure/trie.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    int subtractProductAndSum(int n) {
-        long long sum = 0, product = 1;
+  int subtractProductAndSum(int n) {
+    long long sum = 0, product = 1;
 
-        while (n != 0) {
-            int cur = n % 10;
-            sum += cur;
-            product *= cur;
-            n /= 10;
-        }
-
-        return int(product-sum);
+    while (n != 0) {
+      int cur = n % 10;
+      sum += cur;
+      product *= cur;
+      n /= 10;
     }
+
+    return int(product - sum);
+  }
 
 };
 
 int main() {
 
-
-    return 0;
+  return 0;
 }

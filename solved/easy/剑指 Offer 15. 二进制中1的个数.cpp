@@ -5,17 +5,17 @@
 #include "data_structure/segment_tree.h"
 
 class Solution {
-private:
+ private:
 
-public:
+ public:
 
-    int hammingWeight(uint32_t n) {
-        return __builtin_popcount(n);
-    }
+  int hammingWeight(uint32_t n) {
+    return __builtin_popcount(n);
+  }
 
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

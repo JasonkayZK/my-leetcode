@@ -17,47 +17,47 @@ using LL = long long;
 
 // Definition for a binary tree node.
 class TreeNode {
-public:
-    int val;
-    TreeNode *left;
-    TreeNode *right;
+ public:
+  int val;
+  TreeNode *left;
+  TreeNode *right;
 
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+  TreeNode() : val(0), left(nullptr), right(nullptr) {}
 
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
 
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+  TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
 // Definition for singly-linked list.
 class ListNode {
-public:
-    int val;
-    ListNode *next;
+ public:
+  int val;
+  ListNode *next;
 
-    ListNode() : val(0), next(nullptr) {}
+  ListNode() : val(0), next(nullptr) {}
 
-    ListNode(int x) : val(x), next(nullptr) {}
+  ListNode(int x) : val(x), next(nullptr) {}
 
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
+  ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
 class Solution {
-private:
+ private:
 
-public:
-    string convertToTitle(int columnNumber) {
-        string ans;
-        while(columnNumber--){
-            ans += columnNumber % 26 + 'A';
-            columnNumber /= 26;
-        }
-        reverse(begin(ans), end(ans));
-        return ans;
+ public:
+  string convertToTitle(int columnNumber) {
+    string ans;
+    while (columnNumber--) {
+      ans += columnNumber % 26 + 'A';
+      columnNumber /= 26;
     }
+    reverse(begin(ans), end(ans));
+    return ans;
+  }
 };
 
 int main() {
 
-    return 0;
+  return 0;
 }

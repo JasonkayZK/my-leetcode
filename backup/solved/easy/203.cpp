@@ -13,15 +13,15 @@ using namespace std;
 
 // Definition for singly-linked list.
 class ListNode {
-public:
-    int val;
-    ListNode *next;
+ public:
+  int val;
+  ListNode *next;
 
-    ListNode() : val(0), next(nullptr) {}
+  ListNode() : val(0), next(nullptr) {}
 
-    ListNode(int x) : val(x), next(nullptr) {}
+  ListNode(int x) : val(x), next(nullptr) {}
 
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
+  ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
 class Solution {
@@ -47,10 +47,10 @@ public:
  */
 
 /* Method 2: Recursive */
-public:
-    ListNode *removeElements(ListNode *head, int val) {
-        if (head == nullptr) return head;
-        head->next = removeElements(head->next, val);
-        return head->val == val ? head->next : head;
-    }
+ public:
+  ListNode *removeElements(ListNode *head, int val) {
+    if (head == nullptr) return head;
+    head->next = removeElements(head->next, val);
+    return head->val == val ? head->next : head;
+  }
 };

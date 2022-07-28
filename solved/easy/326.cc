@@ -6,25 +6,23 @@
 #include "data_structure/union_find.h"
 
 class Solution {
-public:
+ public:
 
-    bool isPowerOfThree(int n) {
-        if (n == 1) return true;
-        if (n < 3) return false;
+  bool isPowerOfThree(int n) {
+    if (n == 1) return true;
+    if (n < 3) return false;
 
-        while (n % 3 == 0) {
-            n /= 3;
-        }
-        return n == 1;
+    while (n % 3 == 0) {
+      n /= 3;
     }
+    return n == 1;
+  }
 
-private:
-
+ private:
 
 };
 
 int main() {
 
-
-    return 0;
+  return 0;
 }
