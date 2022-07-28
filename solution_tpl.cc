@@ -6,17 +6,13 @@
 #include "data_structure/union_find.h"
 
 class Solution {
-public:
+ public:
 
-
-
-private:
-
+ private:
 
 };
 
 int main() {
 
-
-    return 0;
+  return 0;
 }
