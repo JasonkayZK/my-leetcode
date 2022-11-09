@@ -39,6 +39,27 @@ struct ListNode {
 class Solution {
  public:
 
+  bool isValid(string s) {
+    stack<char> stk;
+
+    for (const auto &c : s) {
+      if (c == '}') {
+        if (stk.empty() || stk.top() != '{') return false;
+        else stk.pop();
+      } else if (c == ')') {
+        if (stk.empty() || stk.top() != '(') return false;
+        else stk.pop();
+      } else if (c == ']') {
+        if (stk.empty() || stk.top() != '[') return false;
+        else stk.pop();
+      } else {
+        stk.push(c);
+      }
+    }
+
+    return stk.empty();
+  }
+
  private:
 
 };

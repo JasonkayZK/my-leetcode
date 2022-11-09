@@ -39,11 +39,36 @@ struct ListNode {
 class Solution {
  public:
 
+  int lengthOfLongestSubstring(string s) {
+    int c_map[256];
+    fill(c_map, c_map + 256, -1);
+    int n = s.size();
+
+    if (n <= 1) return n;
+    if (n == 2) return s[0] == s[1] ? 1 : 2;
+
+    int res = 1, l = 0, r = 1;
+    c_map[s[0]] = 0;
+    while (r < n) {
+      if (c_map[s[r]] >= 0) {
+        l = max(c_map[s[r]] + 1, l);
+        c_map[s[r]] = r;
+      } else {
+        c_map[s[r]] = r;
+      }
+      res = max(res, r - l + 1);
+      ++r;
+    }
+    return res;
+  }
+
  private:
 
 };
 
 int main() {
+
+  Solution().lengthOfLongestSubstring("abba");
 
   return 0;
 }
