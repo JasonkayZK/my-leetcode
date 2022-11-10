@@ -48,9 +48,21 @@ struct TreeNode {
 class Solution {
  public:
 
+  vector<int> inorderTraversal(TreeNode *root) {
+    vector<int> res;
+    dfs_helper(res, root);
+    return res;
+  }
 
  private:
 
+  void dfs_helper(vector<int> &res, TreeNode *root) {
+    if (root == nullptr) return;
+
+    if (root->left != nullptr) dfs_helper(res, root->left);
+    res.push_back(root->val);
+    if (root->right != nullptr) dfs_helper(res, root->right);
+  }
 
 };
 

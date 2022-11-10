@@ -36,21 +36,30 @@ struct ListNode {
   ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-struct TreeNode {
-  int val;
-  TreeNode *left;
-  TreeNode *right;
-  TreeNode() : val(0), left(nullptr), right(nullptr) {}
-  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-  TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-};
-
 class Solution {
  public:
 
+  ListNode *removeNthFromEnd(ListNode *head, int n) {
+    auto scott = new ListNode(0, head);
+    auto fast = head;
+
+    int i = n;
+    while (i > 0 && fast != nullptr) {
+      fast = fast->next;
+      --i;
+    }
+
+    auto slow = scott;
+    while (fast != nullptr) {
+      fast = fast->next;
+      slow = slow->next;
+    }
+
+    slow->next = slow->next->next;
+    return scott->next;
+  }
 
  private:
-
 
 };
 

@@ -48,10 +48,22 @@ struct TreeNode {
 class Solution {
  public:
 
+  int diameterOfBinaryTree(TreeNode *root) {
+    dfs_helper(root);
+    return res;
+  }
 
  private:
 
+  int dfs_helper(TreeNode *root) {
+    if (root == nullptr) return 0;
+    int left = dfs_helper(root->left);
+    int right = dfs_helper(root->right);
+    res = max(res, left + right);
+    return max(left, right) + 1;
+  }
 
+  int res = 0;
 };
 
 int main() {
