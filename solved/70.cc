@@ -48,11 +48,19 @@ struct TreeNode {
 class Solution {
  public:
 
-
+  int climbStairs(int n) {
+    if (n <= 2) return n;
+    int l = 1, r = 1, i = 1, temp;
+    while (i < n) {
+      temp = r;
+      r += l;
+      l = temp;
+      ++i;
+    }
+    return r;
+  }
 
  private:
-
-
 
 };
 

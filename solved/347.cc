@@ -48,11 +48,35 @@ struct TreeNode {
 class Solution {
  public:
 
+  vector<int> topKFrequent(vector<int> &nums, int k) {
+    unordered_map<int, int> occurrences;
+    for (auto &v : nums) {
+      occurrences[v]++;
+    }
 
+    auto cmp = [](pair<int, int> x, pair<int, int> y) {
+      return x.second > y.second;
+    };
+    priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(cmp)> pq(cmp);
+    for (auto& [num, count] : occurrences) {
+      if (pq.size() == k) {
+        if (pq.top().second < count) {
+          pq.pop();
+          pq.emplace(num, count);
+        }
+      } else {
+        pq.emplace(num, count);
+      }
+    }
+    vector<int> ret;
+    while (!pq.empty()) {
+      ret.emplace_back(pq.top().first);
+      pq.pop();
+    }
+    return ret;
+  }
 
  private:
-
-
 
 };
 
