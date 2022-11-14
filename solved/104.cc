@@ -47,6 +47,21 @@ struct TreeNode {
 
 class Solution {
 public:
+  int maxDepth(TreeNode *root) {
+    if (root == nullptr) {
+      return 0;
+    }
+    return dfs_helper(root);
+  }
+
+  int dfs_helper(TreeNode *cur) {
+    if (cur == nullptr) {
+      return 0;
+    }
+    int left = dfs_helper(cur->left);
+    int right = dfs_helper(cur->right);
+    return max(left, right) + 1;
+  }
 };
 
 int main() { return 0; }

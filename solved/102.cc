@@ -47,6 +47,32 @@ struct TreeNode {
 
 class Solution {
 public:
+  vector<vector<int>> levelOrder(TreeNode *root) {
+    vector<vector<int>> res;
+
+    if (root == nullptr)
+      return {{}};
+
+    queue<TreeNode *> q;
+    q.push(root);
+    while (!q.empty()) {
+      int cur_n = q.size();
+      vector<int> cur;
+      for (int i = 0; i < cur_n; ++i) {
+        auto cur_node = q.front();
+        q.pop();
+
+        cur.push_back(cur_node->val);
+        if (cur_node->left != nullptr)
+          q.push(cur_node->left);
+        if (cur_node->right != nullptr)
+          q.push(cur_node->right);
+      }
+      res.push_back(cur);
+    }
+
+    return res;
+  }
 };
 
 int main() { return 0; }

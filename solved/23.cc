@@ -1,4 +1,4 @@
-#include <algorithm>
+  #include <algorithm>
 #include <bitset>
 #include <cassert>
 #include <climits>
@@ -47,6 +47,30 @@ struct TreeNode {
 
 class Solution {
 public:
+  ListNode *mergeKLists(vector<ListNode *> &lists) {
+    auto scott = new ListNode(0);
+    auto cur = scott;
+    int n = lists.size();
+    if (n <= 0) {
+      return scott->next;
+    }
+
+    priority_queue<int, vector<int>, greater<>> pq;
+    for (int i = 0; i < n; ++i) {
+      auto cur_list = lists[i];
+      while (cur_list != nullptr) {
+        pq.push(cur_list->val);
+        cur_list = cur_list->next;
+      }
+    }
+
+    while (!pq.empty()) {
+      cur->next = new ListNode(pq.top());
+      pq.pop();
+      cur = cur->next;
+    }
+    return scott->next;
+  }
 };
 
 int main() { return 0; }
